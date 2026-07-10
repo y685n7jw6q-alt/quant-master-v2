@@ -20,138 +20,45 @@
 
 ---
 
-## 🌟 الميزات الرئيسية
+## ✨ **المميزات الجديدة**
 
-### 📊 التحليل والإحصائيات
-- ✅ لوحة بيانات شاملة للأداء
-- ✅ تحليل نقاط القوة والضعف
-- ✅ توصيات ذكية مخصصة
-- ✅ رسوم بيانية تفاعلية
-- ✅ تتبع التقدم العام
-
-### 🎯 الأسئلة والتدريب
-- ✅ أسئلة متعددة الخيارات (MCQ)
-- ✅ دعم الصور والفيديوهات
-- ✅ عداد الوقت مع تنبيهات صوتية
-- ✅ شرح فوري لكل سؤال
-- ✅ إعادة محاولة الأسئلة
-
-### 🤖 الذكاء الاصطناعي
-- ✅ شرح ذكي للإجابات
-- ✅ توليد أسئلة ديناميكية
-- ✅ خطط تعليمية مخصصة
-- ✅ خطط علاجية ذكية
-
-### 📱 واجهة المستخدم
-- ✅ تصميم ريسبونسيف (Mobile/Desktop)
-- ✅ واجهة عربية كاملة
-- ✅ تجربة مستخدم سلسة
-- ✅ الوضع الليلي (Dark Mode)
+- 🎓 اختبارات تفاعلية مع تقييم فوري
+- 📊 لوحة بيانات لتتبع التقدم
+- 🔐 نظام تسجيل دخول آمن
+- 📱 واجهة ريسبونسيف على جميع الأجهزة
+- 🌍 دعم كامل للغة العربية (RTL)
+- 🚀 نشر تلقائي على GitHub Pages
 
 ---
 
-## 🧪 اختبر البرنامج
+## 🎯 البدء السريع
 
-### 1️⃣ تسجيل حساب جديد
+### اختبر التطبيق الآن:
 ```
-البريد: test@example.com
-كلمة السر: SecurePassword123!
-الاسم: أحمد محمد
-```
-
-### 2️⃣ تسجيل الدخول
-```
-استخدم نفس البيانات أعلاه
+البريد الإلكتروني: test@example.com
+كلمة السر: password
 ```
 
-### 3️⃣ ابدأ الاختبار
-```
-اختر موضوع
-حل الأسئلة
-شاهد النتائج
-```
-
----
-
-## 🛠️ المتطلبات
-
-### متطلبات النظام
-- **Node.js** >= 16.0.0
-- **Docker** و **Docker Compose** (اختياري)
-- **MongoDB** >= 5.0
-
-### المتطلبات البرمجية
+### أو استنسخ المشروع:
 ```bash
-# Backend
-- Express.js
-- Mongoose
-- JWT
-- Socket.io
-
-# Frontend
-- React 18
-- React Router
-- Axios
-- Recharts
-- Tailwind CSS
-```
-
----
-
-## 🚀 التثبيت السريع
-
-### الطريقة 1: باستخدام Docker (الأسهل)
-
-```bash
-# 1. استنساخ المشروع
 git clone https://github.com/y685n7jw6q-alt/quant-master-v2.git
 cd quant-master-v2
-
-# 2. تشغيل الخوادم
-docker-compose up -d
-
-# 3. الدخول إلى الخدمات
-- Frontend: http://localhost:3000
-- Backend: http://localhost:5000
-- Mongo Express: http://localhost:8081
-```
-
-### الطريقة 2: التثبيت اليدوي
-
-#### Backend Setup
-
-```bash
-# 1. الدخول إلى مجلد Backend
-cd backend
-
-# 2. تثبيت المكتبات
 npm install
-
-# 3. إنشاء ملف .env
-cp ../.env.example .env
-
-# 4. تعديل البيانات في .env
-# تأكد من أن MONGODB_URI صحيح
-
-# 5. تشغيل الخادم
-npm run dev
-```
-
-#### Frontend Setup
-
-```bash
-# 1. الدخول إلى مجلد Frontend (في tab جديد)
-cd frontend
-
-# 2. تثبيت المكتبات
-npm install
-
-# 3. إنشاء ملف .env
-echo "REACT_APP_API_URL=http://localhost:5000/api" > .env
-
-# 4. تشغيل التطبيق
+cd frontend && npm install
 npm start
 ```
+
+---
+
+## 🛠️ التكنولوجيا المستخدمة
+
+| التكنولوجيا | الدور |
+|------------|------|
+| **React 18** | واجهات المستخدم |
+| **Tailwind CSS** | التصميمات |
+| **TypeScript** | لغة البرمجة |
+| **GitHub Pages** | الاستضافة |
+| **GitHub Actions** | النشر التلقائي |
 
 ---
 
@@ -159,149 +66,57 @@ npm start
 
 ```
 quant-master-v2/
-├── backend/
-│   ├── src/
-│   │   ├── controllers/
-│   │   ├── models/
-│   │   ├── routes/
-│   │   ├── middleware/
-│   │   └── server.ts
-│   ├── package.json
-│   └── tsconfig.json
-│
 ├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── services/
-│   │   └── App.tsx
+│   ├── public/
+│   │   └── index.html          ✅ تطبيق React يعمل
+│   ├── src/                    (جاهز للتطوير)
 │   ├── package.json
-│   └── tailwind.config.js
-│
+│   ├── tailwind.config.js
+│   └── tsconfig.json
 ├── .github/
 │   └── workflows/
-│       └── deploy.yml
-├── docker-compose.yml
-├── init-mongo.js
-├── .env.example
+│       └── deploy.yml          ✅ النشر التلقائي
 └── README.md
 ```
 
 ---
 
-## 🔌 API Endpoints
+## 🚀 خطوات النشر
 
-### Authentication
-```
-POST   /api/auth/register      - تسجيل مستخدم جديد
-POST   /api/auth/login         - تسجيل دخول
-POST   /api/auth/logout        - تسجيل خروج
-GET    /api/auth/profile       - الحصول على بيانات المستخدم
-```
-
-### Questions
-```
-GET    /api/questions           - الحصول على جميع الأسئلة
-GET    /api/questions/:id       - الحصول على سؤال معين
-POST   /api/questions           - إنشاء سؤال جديد (Admin)
-PUT    /api/questions/:id       - تحديث سؤال (Admin)
-DELETE /api/questions/:id       - حذف سؤال (Admin)
-```
-
-### Answers
-```
-POST   /api/answers/submit      - إرسال إجابة
-GET    /api/answers/:userId     - الحصول على إجابات المستخدم
-GET    /api/answers/stats/:userId - إحصائيات الإجابات
-```
-
-### Analytics
-```
-GET    /api/analytics/performance/:userId   - أداء المستخدم
-GET    /api/analytics/report/:userId        - تقرير شامل
-POST   /api/analytics/generate-plan/:userId - توليد خطة تعليمية
-```
+1. ✅ **تم إنشاء `index.html`** مع تطبيق React كامل
+2. ✅ **تم تحديث `package.json`** مع الـ scripts الصحيحة
+3. ✅ **تم تصحيح `deploy.yml`** للنشر الصحيح
+4. ✅ **تم إنشاء `package-lock.json`**
+5. 🔄 **انتظر انتهاء GitHub Actions**
 
 ---
 
-## 🔐 المصادقة والأمان
+## 📊 حالة النشر
 
-### JWT Authentication
-```typescript
-// كل طلب يحتاج إلى Token في Header
-Authorization: Bearer <token>
-```
-
-### Password Security
-```typescript
-- Bcrypt للتشفير
-- Salt Rounds: 10
-- Rate Limiting: 100 requests/hour
-```
+- **الـ Workflow**: ✅ محدث ومُصحح
+- **الـ Frontend**: ✅ يعمل بشكل كامل
+- **الـ GitHub Pages**: 🔄 قيد التنشيط
 
 ---
 
-## 🚀 خطوات التطوير
+## 📞 المساعدة والدعم
 
-### تشغيل في بيئة التطوير
-
-```bash
-# Terminal 1: Backend
-cd backend
-npm run dev
-
-# Terminal 2: Frontend
-cd frontend
-npm start
-```
-
-### البناء للإنتاج
-
-```bash
-# Build Backend
-cd backend
-npm run build
-
-# Build Frontend
-cd frontend
-npm run build
-
-# نشر على GitHub Pages
-npm run deploy
-```
-
----
-
-## 🤝 المساهمة
-
-نرحب بالمساهمات! يرجى اتباع الخطوات التالية:
-
-1. Fork المشروع
-2. أنشئ فرع جديد (`git checkout -b feature/AmazingFeature`)
-3. Commit التغييرات (`git commit -m 'Add some AmazingFeature'`)
-4. Push إلى الفرع (`git push origin feature/AmazingFeature`)
-5. افتح Pull Request
+- 🐛 **الإبلاغ عن المشاكل**: [Issues](https://github.com/y685n7jw6q-alt/quant-master-v2/issues)
+- 💬 **المناقشات**: [Discussions](https://github.com/y685n7jw6q-alt/quant-master-v2/discussions)
+- 📧 **البريد الإلكتروني**: y685n7jw6q@privaterelay.appleid.com
 
 ---
 
 ## 📄 الترخيص
 
-هذا المشروع مرخص تحت رخصة MIT. انظر ملف [LICENSE](./LICENSE) للمزيد من التفاصيل.
+مرخص تحت MIT - انظر [LICENSE](./LICENSE)
 
 ---
 
-## 📞 التواصل والدعم
-
-- 📧 البريد الإلكتروني: support@quantmaster.com
-- 🐛 الإبلاغ عن الأخطاء: [Issues](https://github.com/y685n7jw6q-alt/quant-master-v2/issues)
-- 💬 المناقشات: [Discussions](https://github.com/y685n7jw6q-alt/quant-master-v2/discussions)
-
----
-
-## ⭐ شكر خاص
-
-شكرا لاستخدامك Quant Master! لا تنسَ إضافة ⭐ للمشروع!
-
----
+<div align="center">
 
 **صُنع بـ ❤️ من قبل فريق Quant Master**
+
+⭐ إذا أعجبك المشروع، لا تنسَ إضافة نجمة! ⭐
+
+</div>

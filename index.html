@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quant Master - منصة تعليمية ذكية</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            direction: rtl;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script>
+        // Simple React App using CDN
+        const e = React.createElement;
+        
+        function App() {
+            const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+            const [email, setEmail] = React.useState('');
+            const [password, setPassword] = React.useState('');
+            const [score, setScore] = React.useState(0);
+            const [currentQuestion, setCurrentQuestion] = React.useState(0);
+
+            const questions = [
+                {
+                    question: "ما هو 2 + 2؟",
+                    options: ["3", "4", "5", "6"],
+                    correct: 1
+                },
+                {
+                    question: "ما هو الجذر التربيعي لـ 16؟",
+                    options: ["2", "3", "4", "5"],
+                    correct: 2
+                },
+                {
+                    question: "كم عدد أيام السنة الميلادية؟",
+                    options: ["360", "365", "370", "364"],
+                    correct: 1
+                }
+            ];
+
+            const handleLogin = () => {
+                if (email && password) {
+                    setIsLoggedIn(true);
+                }
+            };
+
+            const handleAnswer = (index) => {
+                if (index === questions[currentQuestion].correct) {
+                    setScore(score + 1);
+                }
+                if (currentQuestion < questions.length - 1) {
+                    setCurrentQuestion(currentQuestion + 1);
+                } else {
+                    alert(`تم إنهاء الاختبار! حصلت على ${score + (index === questions[currentQuestion].correct ? 1 : 0)} من ${questions.length}`);
+                    setCurrentQuestion(0);
+                    setScore(0);
+                }
+            };
+
+            if (!isLoggedIn) {
+                return e('div', { className: 'min-h-screen bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center p-4' },
+                    e('div', { className: 'bg-white rounded-lg shadow-2xl p-8 w-full max-w-md' },
+                        e('h1', { className: 'text-3xl font-bold text-center mb-2 text-gray-800' }, '🎓 Quant Master'),
+                        e('p', { className: 'text-center text-gray-600 mb-6' }, 'منصة تعليمية ذكية'),
+                        e('input', {
+                            type: 'email',
+                            placeholder: 'البريد الإلكتروني',
+                            value: email,
+                            onChange: (evt) => setEmail(evt.target.value),
+                            className: 'w-full p-3 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-600'
+                        }),
+                        e('input', {
+                            type: 'password',
+                            placeholder: 'كلمة السر',
+                            value: password,
+                            onChange: (evt) => setPassword(evt.target.value),
+                            className: 'w-full p-3 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-600'
+                        }),
+                        e('button', {
+                            onClick: handleLogin,
+                            className: 'w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition'
+                        }, 'تسجيل الدخول'),
+                        e('p', { className: 'text-center text-gray-600 mt-4 text-sm' }, 'اختبر: test@example.com / password')
+                    )
+                );
+            }
+
+            return e('div', { className: 'min-h-screen bg-gradient-to-br from-blue-600 to-purple-600 p-4' },
+                e('div', { className: 'max-w-2xl mx-auto' },
+                    e('div', { className: 'bg-white rounded-lg shadow-2xl p-8 mb-4' },
+                        e('div', { className: 'flex justify-between items-center mb-6' },
+                            e('h1', { className: 'text-3xl font-bold text-gray-800' }, '🎓 Quant Master'),
+                            e('button', {
+                                onClick: () => setIsLoggedIn(false),
+                                className: 'bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600'
+                            }, 'تسجيل خروج')
+                        ),
+                        e('p', { className: 'text-gray-600' }, `مرحباً: ${email}`)
+                    ),
+                    e('div', { className: 'bg-white rounded-lg shadow-2xl p-8' },
+                        e('div', { className: 'mb-6' },
+                            e('div', { className: 'flex justify-between items-center mb-4' },
+                                e('h2', { className: 'text-2xl font-bold text-gray-800' }, `السؤال ${currentQuestion + 1} من ${questions.length}`),
+                                e('span', { className: 'text-xl font-bold text-green-600' }, `النقاط: ${score}`)
+                            ),
+                            e('div', { className: 'w-full bg-gray-200 rounded-full h-2' },
+                                e('div', {
+                                    className: 'bg-blue-600 h-2 rounded-full',
+                                    style: { width: `${((currentQuestion + 1) / questions.length) * 100}%` }
+                                })
+                            )
+                        ),
+                        e('p', { className: 'text-xl font-semibold mb-6 text-gray-800' }, questions[currentQuestion].question),
+                        e('div', { className: 'grid grid-cols-1 gap-4' },
+                            questions[currentQuestion].options.map((option, index) =>
+                                e('button', {
+                                    key: index,
+                                    onClick: () => handleAnswer(index),
+                                    className: 'p-4 bg-gray-100 hover:bg-blue-500 hover:text-white rounded-lg font-semibold transition text-right'
+                                }, option)
+                            )
+                        )
+                    )
+                )
+            );
+        }
+
+        ReactDOM.render(e(App), document.getElementById('root'));
+    </script>
+</body>
+</html>

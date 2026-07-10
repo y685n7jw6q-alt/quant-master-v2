@@ -1,0 +1,99 @@
+{
+  "questionStructure": {
+    "metadata": {
+      "id": "Q001",
+      "skillId": "SK001",
+      "standardId": "ST001",
+      "templateId": "TMPL001",
+      "version": 1,
+      "createdAt": "2024-01-01",
+      "updatedAt": "2024-01-01",
+      "status": "published"
+    },
+    "question": {
+      "text": "إذا كان سعر الكتاب 50 ريال وتم تخفيضه بنسبة 20%، فما السعر الجديد؟",
+      "languageLevel": "simple",
+      "difficulty": "foundation",
+      "estimatedTime": 1,
+      "category": "percentage",
+      "scenario": "shopping"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": "10 ريال",
+        "isCorrect": false,
+        "reason": "تم حساب النسبة فقط دون طرحها"
+      },
+      {
+        "id": "B",
+        "text": "40 ريال",
+        "isCorrect": true,
+        "reason": "الحل الصحيح"
+      },
+      {
+        "id": "C",
+        "text": "30 ريال",
+        "isCorrect": false,
+        "reason": "خطأ في حساب النسبة المئوية"
+      },
+      {
+        "id": "D",
+        "text": "70 ريال",
+        "isCorrect": false,
+        "reason": "تم الجمع بدلاً من الطرح"
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "step": 1,
+          "description": "حساب قيمة التخفيض",
+          "calculation": "50 × 20% = 50 × 0.2 = 10 ريال"
+        },
+        {
+          "step": 2,
+          "description": "طرح التخفيض من السعر الأصلي",
+          "calculation": "50 - 10 = 40 ريال"
+        }
+      ],
+      "formula": "السعر الجديد = السعر الأصلي × (1 - النسبة المئوية)",
+      "keyPoints": [
+        "تحويل النسبة المئوية إلى عدد عشري",
+        "طرح التخفيض من السعر الأصلي",
+        "التحقق من المعقولية"
+      ]
+    },
+    "commonMistakes": [
+      {
+        "mistake": "حساب النسبة فقط بدون طرحها",
+        "correction": "يجب طرح النسبة من الكل"
+      },
+      {
+        "mistake": "خطأ في تحويل النسبة المئوية",
+        "correction": "20% = 0.2 وليس 0.02"
+      },
+      {
+        "mistake": "جمع التخفيض بدلاً من طرحه",
+        "correction": "الخصم = طرح، الزيادة = جمع"
+      }
+    ],
+    "metadata_difficulty": {
+      "level": "foundation",
+      "description": "سؤال مباشر جداً - خطوة واحدة أو خطوتان",
+      "expectedSuccessRate": "95%"
+    },
+    "tags": [
+      "النسبة المئوية",
+      "الخصم",
+      "عملية حسابية أساسية",
+      "سيناريو تسوق"
+    ],
+    "performance": {
+      "successRate": 0,
+      "averageTime": 0,
+      "mostCommonWrongAnswer": null,
+      "timesUsed": 0
+    }
+  }
+}

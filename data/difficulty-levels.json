@@ -1,0 +1,206 @@
+{
+  "difficultyLevels": {
+    "level_1_foundation": {
+      "id": "foundation",
+      "emoji": "🟢",
+      "name": "التأسيس",
+      "arabicName": "أساسي جداً",
+      "description": "سؤال مباشر جداً - خطوة واحدة أو خطوتان بسيطتان",
+      "characteristics": {
+        "steps": "1-2 خطوات",
+        "complexity": "منخفضة جداً",
+        "timeEstimate": "30-60 ثانية",
+        "formulaRequired": "لا - أو صيغة مباشرة",
+        "reasoningLevel": "تطبيق مباشر",
+        "dataProvided": "كل المعلومات واضحة",
+        "distractors": "بسيطة جداً"
+      },
+      "examples": {
+        "example_1": "2 + 3 = ؟",
+        "example_2": "إذا كان السعر 100 ريال وخصم 10%، كم السعر الجديد؟"
+      },
+      "successRate": "> 95%",
+      "skillAssessment": "هل الطالب يفهم الفكرة الأساسية؟",
+      "nextAction": "إذا أخطأ → إعادة شرح المفهوم"
+    },
+    "level_2_basic": {
+      "id": "basic",
+      "emoji": "🟡",
+      "name": "الأساسي",
+      "arabicName": "تطبيق أساسي",
+      "description": "تطبيق مباشر للقانون - 2-3 خطوات منظمة",
+      "characteristics": {
+        "steps": "2-3 خطوات",
+        "complexity": "منخفضة",
+        "timeEstimate": "1-2 دقيقة",
+        "formulaRequired": "نعم - لكن مباشرة",
+        "reasoningLevel": "تطبيق القانون",
+        "dataProvided": "معظم المعلومات واضحة",
+        "distractors": "معقولة - خيارات قريبة"
+      },
+      "examples": {
+        "example_1": "إذا اشترى أحمد 5 كتب بـ 250 ريال، فكم سعر الكتاب الواحد؟",
+        "example_2": "النسبة بين عمري أحمد ومحمد 2:3، إذا عمر أحمد 20 سنة، فكم عمر محمد؟"
+      },
+      "successRate": "85-95%",
+      "skillAssessment": "هل يمكن للطالب تطبيق الصيغة؟",
+      "nextAction": "إذا أخطأ → شرح الخطوات بالتفصيل"
+    },
+    "level_3_intermediate": {
+      "id": "intermediate",
+      "emoji": "🟠",
+      "name": "المتوسط",
+      "arabicName": "تطبيق متقدم",
+      "description": "دمج عمليات متعددة - 3-4 خطوات مع تفكير",
+      "characteristics": {
+        "steps": "3-4 خطوات",
+        "complexity": "متوسطة",
+        "timeEstimate": "2-3 دقائق",
+        "formulaRequired": "نعم - قد تحتاج لتطويع",
+        "reasoningLevel": "ربط المفاهيم",
+        "dataProvided": "بعض المعلومات محتاجة استنتاج",
+        "distractors": "قوية - خيارات قريبة جداً"
+      },
+      "examples": {
+        "example_1": "سيارة تقطع 100 كم في ساعتين، كم تقطع في 5 ساعات بنفس السرعة؟",
+        "example_2": "ربح تاجر 20% على سلعة سعرها الأصلي 500 ريال، كم سعر البيع؟"
+      },
+      "successRate": "70-85%",
+      "skillAssessment": "هل يمكن للطالب ربط عمليات متعددة؟",
+      "nextAction": "إذا أخطأ → تحديد الخطوة الخاطئة وإعادتها"
+    },
+    "level_4_advanced": {
+      "id": "advanced",
+      "emoji": "🔴",
+      "name": "المتقدم",
+      "arabicName": "مهارات عليا",
+      "description": "سؤال معقد - 4-5 خطوات مع معلومات زائدة أو مشتتات",
+      "characteristics": {
+        "steps": "4-5 خطوات",
+        "complexity": "عالية",
+        "timeEstimate": "3-5 دقائق",
+        "formulaRequired": "نعم - قد تحتاج اختيار الصيغة",
+        "reasoningLevel": "تحليل وتطبيق عميق",
+        "dataProvided": "معلومات زائدة قد تكون مشتتة",
+        "distractors": "قوية جداً - حسابات خاطئة شائعة"
+      },
+      "examples": {
+        "example_1": "عامل ينجز 1/3 العمل في 3 أيام، وعامل آخر ينجز 1/4 العمل في يوم واحد. كم يوم يستغرق العملان معاً لإنجاز العمل كاملاً؟",
+        "example_2": "سعر سلعة 1000 ريال، ثم ارتفع 10%، ثم انخفض 10%. كم السعر النهائي؟"
+      },
+      "successRate": "50-70%",
+      "skillAssessment": "هل يمكن للطالب حل مسائل معقدة؟",
+      "nextAction": "إذا أخطأ → تحليل المسألة خطوة بخطوة"
+    },
+    "level_5_qudrat": {
+      "id": "qudrat",
+      "emoji": "⭐",
+      "name": "محاكاة القدرات",
+      "arabicName": "مستوى القدرات الحقيقي",
+      "description": "سؤال يطابق اختبار القدرات الفعلي - 5+ خطوات مع عمق تفكير",
+      "characteristics": {
+        "steps": "5-6 خطوات أو أكثر",
+        "complexity": "عالية جداً",
+        "timeEstimate": "4-6 دقائق",
+        "formulaRequired": "نعم - اختيار الطريقة الأفضل",
+        "reasoningLevel": "فهم عميق + براعة حسابية",
+        "dataProvided": "معلومات مختلطة + معطيات غير ضرورية",
+        "distractors": "مشابهة جداً للإجابة الصحيحة"
+      },
+      "specialFeatures": [
+        "قد يحتوي على جدول أو رسم بياني",
+        "قد يتطلب اختيار طريقة حل من عدة طرق",
+        "قد يتضمن دمج مهارتين",
+        "قد يحتوي على معلومات غير ضرورية",
+        "قد يحتاج لتقدير أو حساب سريع"
+      ],
+      "examples": {
+        "example_1": "جدول يوضح أسعار ثلاث سلع، واحدة تم تخفيضها بنسبة مختلفة. إذا اشترى شخص كميات معينة، فكم المبلغ الإجمالي؟",
+        "example_2": "رحلة طول الطريق 500 كم، السرعة الأولى x كم/س، والثانية y كم/س. إذا كان إجمالي الوقت z ساعة... كم المسافة الأولى؟"
+      },
+      "successRate": "30-50%",
+      "skillAssessment": "هل الطالب مستعد لاختبار القدرات الحقيقي؟",
+      "nextAction": "إذا أخطأ → تحليل أسباب الخطأ (حساب/فهم/تركيز)"
+    }
+  },
+  "difficultyProgression": {
+    "description": "مسار التدرج في الصعوبة للمهارة الواحدة",
+    "progression": [
+      {
+        "position": 1,
+        "level": "foundation",
+        "count": 2,
+        "purpose": "فهم المفهوم الأساسي"
+      },
+      {
+        "position": 2,
+        "level": "basic",
+        "count": 3,
+        "purpose": "تطبيق القانون"
+      },
+      {
+        "position": 3,
+        "level": "intermediate",
+        "count": 3,
+        "purpose": "ربط العمليات"
+      },
+      {
+        "position": 4,
+        "level": "advanced",
+        "count": 2,
+        "purpose": "حل مسائل معقدة"
+      }
+    ],
+    "totalQuestionsPerSkill": 10,
+    "masteryThreshold": "8/10 (80%)"
+  },
+  "assessmentCriteria": {
+    "foundation": {
+      "minimumCorrect": "6/10",
+      "timeLimit": "1 minute per question",
+      "successIndicator": "فهم المفهوم الأساسي"
+    },
+    "basic": {
+      "minimumCorrect": "7/10",
+      "timeLimit": "2 minutes per question",
+      "successIndicator": "القدرة على التطبيق"
+    },
+    "intermediate": {
+      "minimumCorrect": "7/10",
+      "timeLimit": "3 minutes per question",
+      "successIndicator": "القدرة على الربط"
+    },
+    "advanced": {
+      "minimumCorrect": "6/10",
+      "timeLimit": "4 minutes per question",
+      "successIndicator": "القدرة على التحليل"
+    },
+    "qudrat": {
+      "minimumCorrect": "5/10",
+      "timeLimit": "5 minutes per question",
+      "successIndicator": "الاستعداد للاختبار الحقيقي"
+    }
+  },
+  "mistakesPerLevel": {
+    "foundation": {
+      "allowedMistakes": "4",
+      "feedback": "شرح أساسي موجز"
+    },
+    "basic": {
+      "allowedMistakes": "3",
+      "feedback": "شرح الخطوات"
+    },
+    "intermediate": {
+      "allowedMistakes": "3",
+      "feedback": "تحليل العملية"
+    },
+    "advanced": {
+      "allowedMistakes": "4",
+      "feedback": "تحليل متعمق"
+    },
+    "qudrat": {
+      "allowedMistakes": "5",
+      "feedback": "مقارنة مع الطريقة الأمثل"
+    }
+  }
+}

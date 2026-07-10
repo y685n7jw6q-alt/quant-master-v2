@@ -1,0 +1,38 @@
+export const ERROR_TYPES = {
+  CONCEPTUAL: 'conceptual',
+  CALCULATION: 'calculation',
+  CARELESS: 'careless',
+} as const;
+
+export const ERROR_SEVERITY = {
+  CRITICAL: 'critical',
+  MAJOR: 'major',
+  MINOR: 'minor',
+} as const;
+
+export const ERROR_CODES = {
+  ALG001_ERR01: 'ALG001-ERR01',
+  ALG001_ERR02: 'ALG001-ERR02',
+  ALG001_ERR03: 'ALG001-ERR03',
+  ALG002_ERR01: 'ALG002-ERR01',
+  ALG002_ERR02: 'ALG002-ERR02',
+  ALG003_ERR01: 'ALG003-ERR01',
+  ALG003_ERR02: 'ALG003-ERR02',
+  ALG004_ERR01: 'ALG004-ERR01',
+  ALG004_ERR02: 'ALG004-ERR02',
+  ALG005_ERR01: 'ALG005-ERR01',
+  ALG005_ERR02: 'ALG005-ERR02',
+  ALG006_ERR01: 'ALG006-ERR01',
+  ALG006_ERR02: 'ALG006-ERR02',
+  ALG007_ERR01: 'ALG007-ERR01',
+  ALG007_ERR02: 'ALG007-ERR02',
+  ALG008_ERR01: 'ALG008-ERR01',
+  ALG008_ERR02: 'ALG008-ERR02',
+} as const;
+
+export const MASTERY_STATUS = {
+  NOT_STARTED: 'notStarted',
+  LEARNING: 'learning',
+  PROFICIENT: 'proficient',
+  MASTERED: 'mastered',
+} as const;

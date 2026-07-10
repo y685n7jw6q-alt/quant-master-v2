@@ -1,0 +1,39 @@
+export const SKILL_LEVELS = {
+  BASIC: 'Basic',
+  INTERMEDIATE: 'Intermediate',
+  ADVANCED: 'Advanced',
+} as const;
+
+export const DIFFICULTY_LEVELS = {
+  VERY_EASY: 1,
+  EASY: 2,
+  MEDIUM: 3,
+  HARD: 4,
+  VERY_HARD: 5,
+} as const;
+
+export const MASTERY_THRESHOLDS = {
+  MIN_ACCURACY: 80,
+  MIN_ATTEMPTS: 3,
+  MIN_CORRECT_ANSWERS: 5,
+} as const;
+
+export const SKILL_CODES = {
+  ALG001: 'ALG001',
+  ALG002: 'ALG002',
+  ALG003: 'ALG003',
+  ALG004: 'ALG004',
+  ALG005: 'ALG005',
+  ALG006: 'ALG006',
+  ALG007: 'ALG007',
+  ALG008: 'ALG008',
+  ALG009: 'ALG009',
+  ALG010: 'ALG010',
+  CAL001: 'CAL001',
+  CAL002: 'CAL002',
+  GEO001: 'GEO001',
+  GEO002: 'GEO002',
+  GEO003: 'GEO003',
+  DATA001: 'DATA001',
+  DATA002: 'DATA002',
+} as const;

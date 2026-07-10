@@ -1,4 +1,15 @@
-# 📚 Quant Master - AI-Powered Learning Platform
+# 🚀 Quant Master v2 - منصة تعليمية ذكية
+
+## 🌐 **الرابط المباشر للبرنامج**
+
+### ✨ **افتح البرنامج الآن:**
+```
+👉 https://y685n7jw6q-alt.github.io/quant-master-v2
+```
+
+**[اضغط هنا لفتح الواجهة مباشرة](https://y685n7jw6q-alt.github.io/quant-master-v2)**
+
+---
 
 > **منصة تعليمية ذكية لتعلم العلوم الكمية والرياضيات باستخدام الذكاء الاصطناعي**
 
@@ -36,6 +47,29 @@
 - ✅ واجهة عربية كاملة
 - ✅ تجربة مستخدم سلسة
 - ✅ الوضع الليلي (Dark Mode)
+
+---
+
+## 🧪 اختبر البرنامج
+
+### 1️⃣ تسجيل حساب جديد
+```
+البريد: test@example.com
+كلمة السر: SecurePassword123!
+الاسم: أحمد محمد
+```
+
+### 2️⃣ تسجيل الدخول
+```
+استخدم نفس البيانات أعلاه
+```
+
+### 3️⃣ ابدأ الاختبار
+```
+اختر موضوع
+حل الأسئلة
+شاهد النتائج
+```
 
 ---
 
@@ -144,6 +178,9 @@ quant-master-v2/
 │   ├── package.json
 │   └── tailwind.config.js
 │
+├── .github/
+│   └── workflows/
+│       └── deploy.yml
 ├── docker-compose.yml
 ├── init-mongo.js
 ├── .env.example
@@ -228,6 +265,9 @@ npm run build
 # Build Frontend
 cd frontend
 npm run build
+
+# نشر على GitHub Pages
+npm run deploy
 ```
 
 ---

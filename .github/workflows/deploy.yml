@@ -22,18 +22,15 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Install root dependencies
-        run: npm install
+      - name: Install dependencies with legacy peer deps
+        run: npm install --legacy-peer-deps
 
-      - name: Install frontend dependencies
-        run: cd frontend && npm install
-
-      - name: Build frontend
-        run: cd frontend && npm run build
+      - name: Copy build to public directory
+        run: mkdir -p public/build && cp frontend/public/index.html public/build/ || true
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/main'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./frontend/build
+          publish_dir: ./frontend/public

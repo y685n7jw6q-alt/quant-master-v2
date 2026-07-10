@@ -3,74 +3,280 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quant Master - منصة تعليمية ذكية</title>
+    <title>Quant Master - منصة القدرات الكمي المتقدمة</title>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        * {
-            direction: rtl;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+        * { direction: rtl; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
     </style>
 </head>
 <body>
     <div id="root"></div>
     <script>
-        // Simple React App using CDN
         const e = React.createElement;
-        
+
+        // نموذج البيانات
+        const SKILLS_DATA = {
+            program: 'القدرات الكمي',
+            subjects: [
+                {
+                    id: 1,
+                    name: 'القدرات الكمي',
+                    skills: [
+                        {
+                            id: 1,
+                            name: 'الحساب الأساسي',
+                            emoji: '🔢',
+                            prerequisites: [],
+                            standards: ['الجمع', 'الطرح', 'الضرب', 'القسمة', 'الأولويات'],
+                            description: 'العمليات الحسابية الأساسية والقوانين'
+                        },
+                        {
+                            id: 2,
+                            name: 'الكسور والأعداد العشرية',
+                            emoji: '📊',
+                            prerequisites: [1],
+                            standards: ['تحويل الكسور', 'جمع الكسور', 'طرح الكسور', 'ضرب الكسور', 'قسمة الكسور'],
+                            description: 'التعامل مع الكسور والأعداد العشرية'
+                        },
+                        {
+                            id: 3,
+                            name: 'النسبة والتناسب',
+                            emoji: '⚖️',
+                            prerequisites: [1, 2],
+                            standards: ['إيجاد النسبة', 'التناسب الطردي', 'التناسب العكسي', 'المسائل التطبيقية'],
+                            description: 'مبادئ النسبة والتناسب وتطبيقاتها'
+                        },
+                        {
+                            id: 4,
+                            name: 'النسبة المئوية',
+                            emoji: '💯',
+                            prerequisites: [3],
+                            standards: ['إيجاد النسبة', 'إيجاد العدد الأصلي', 'الزيادة والنقصان', 'الربح والخسارة'],
+                            description: 'حسابات النسب المئوية والتطبيقات'
+                        },
+                        {
+                            id: 5,
+                            name: 'المتوسطات والإحصاء',
+                            emoji: '📈',
+                            prerequisites: [1],
+                            standards: ['المتوسط الحسابي', 'الوسيط', 'المنوال', 'الانحراف المعياري'],
+                            description: 'مفاهيم الإحصاء والمتوسطات'
+                        },
+                        {
+                            id: 6,
+                            name: 'السرعة والزمن والمسافة',
+                            emoji: '🚗',
+                            prerequisites: [1, 3],
+                            standards: ['حساب السرعة', 'حساب الزمن', 'حساب المسافة', 'السرعة النسبية'],
+                            description: 'مسائل السرعة والمسافة والزمن'
+                        },
+                        {
+                            id: 7,
+                            name: 'العمل والإنجاز',
+                            emoji: '⚙️',
+                            prerequisites: [3, 6],
+                            standards: ['معدل العمل', 'العمل المشترك', 'العمل المتسلسل'],
+                            description: 'مسائل العمل والإنجاز'
+                        },
+                        {
+                            id: 8,
+                            name: 'الجبر',
+                            emoji: '🔤',
+                            prerequisites: [1],
+                            standards: ['تبسيط العبارات', 'المعادلات الخطية', 'المتباينات', 'الأسس والجذور'],
+                            description: 'العمليات الجبرية والمعادلات'
+                        },
+                        {
+                            id: 9,
+                            name: 'الأنماط والمتتابعات',
+                            emoji: '🔢',
+                            prerequisites: [1, 8],
+                            standards: ['المتتابعات الحسابية', 'المتتابعات الهندسية', 'إيجاد الحدود'],
+                            description: 'الأنماط والمتتابعات وقوانينها'
+                        },
+                        {
+                            id: 10,
+                            name: 'الهندسة المستوية',
+                            emoji: '📐',
+                            prerequisites: [1],
+                            standards: ['الزوايا', 'المثلثات', 'المعادلات', 'التشابه والتطابق'],
+                            description: 'مبادئ الهندسة المستوية'
+                        },
+                        {
+                            id: 11,
+                            name: 'الهندسة الفراغية',
+                            emoji: '🎲',
+                            prerequisites: [10],
+                            standards: ['المجسمات', 'الحجوم', 'المساحات السطحية'],
+                            description: 'الأشكال ثلاثية الأبعاد والحجوم'
+                        },
+                        {
+                            id: 12,
+                            name: 'الإحداثيات والتمثيل البياني',
+                            emoji: '📊',
+                            prerequisites: [8, 10],
+                            standards: ['نظام الإحداثيات', 'الرسوم البيانية', 'المسافة والميل'],
+                            description: 'الإحداثيات والتمثيل البياني'
+                        },
+                        {
+                            id: 13,
+                            name: 'الاحتمالات والتباديل والتوافيق',
+                            emoji: '🎲',
+                            prerequisites: [1, 5],
+                            standards: ['الاحتمالات', 'التباديل', 'التوافيق', 'الأحداث المركبة'],
+                            description: 'نظرية الاحتمالات والتباديل'
+                        },
+                        {
+                            id: 14,
+                            name: 'المقارنة الكمية',
+                            emoji: '⚖️',
+                            prerequisites: [1, 2, 3, 4],
+                            standards: ['مقارنة الأعداد', 'مقارنة العبارات', 'الخصائص المختلفة'],
+                            description: 'مهارات المقارنة والتحليل'
+                        },
+                        {
+                            id: 15,
+                            name: 'الاستدلال الرياضي',
+                            emoji: '🧠',
+                            prerequisites: [1, 8, 9],
+                            standards: ['الاستقراء', 'الاستنتاج', 'إثبات التناقض'],
+                            description: 'مهارات التفكير والاستدلال الرياضي'
+                        }
+                    ]
+                }
+            ],
+            levels: [
+                { id: 1, name: 'التأسيس', emoji: '🟢', color: 'green', questionsCount: 20 },
+                { id: 2, name: 'التطبيق', emoji: '🟡', color: 'yellow', questionsCount: 20 },
+                { id: 3, name: 'الإتقان', emoji: '🟠', color: 'orange', questionsCount: 20 },
+                { id: 4, name: 'الاحتراف', emoji: '🔴', color: 'red', questionsCount: 20 },
+                { id: 5, name: 'محاكاة القدرات', emoji: '⭐', color: 'indigo', questionsCount: 40 }
+            ]
+        };
+
         function App() {
-            const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+            const [page, setPage] = React.useState('home');
+            const [users, setUsers] = React.useState(() => JSON.parse(localStorage.getItem('users')) || []);
+            const [currentUser, setCurrentUser] = React.useState(() => JSON.parse(localStorage.getItem('currentUser')) || null);
             const [email, setEmail] = React.useState('');
             const [password, setPassword] = React.useState('');
-            const [score, setScore] = React.useState(0);
-            const [currentQuestion, setCurrentQuestion] = React.useState(0);
+            const [username, setUsername] = React.useState('');
+            const [error, setError] = React.useState('');
+            const [selectedSkill, setSelectedSkill] = React.useState(null);
+            const [selectedLevel, setSelectedLevel] = React.useState(null);
 
-            const questions = [
-                {
-                    question: "ما هو 2 + 2؟",
-                    options: ["3", "4", "5", "6"],
-                    correct: 1
-                },
-                {
-                    question: "ما هو الجذر التربيعي لـ 16؟",
-                    options: ["2", "3", "4", "5"],
-                    correct: 2
-                },
-                {
-                    question: "كم عدد أيام السنة الميلادية؟",
-                    options: ["360", "365", "370", "364"],
-                    correct: 1
+            const saveUsers = (newUsers) => {
+                setUsers(newUsers);
+                localStorage.setItem('users', JSON.stringify(newUsers));
+            };
+
+            const handleRegister = () => {
+                setError('');
+                if (!username || !email || !password) {
+                    setError('جميع الحقول مطلوبة');
+                    return;
                 }
-            ];
+                if (users.find(u => u.email === email)) {
+                    setError('البريد موجود بالفعل');
+                    return;
+                }
+                const newUser = { username, email, password, progress: {}, scores: {} };
+                saveUsers([...users, newUser]);
+                setEmail('');
+                setPassword('');
+                setUsername('');
+                setError('✅ تم إنشاء الحساب بنجاح!');
+                setTimeout(() => setPage('login'), 2000);
+            };
 
             const handleLogin = () => {
-                if (email && password) {
-                    setIsLoggedIn(true);
+                setError('');
+                const user = users.find(u => u.email === email && u.password === password);
+                if (!user) {
+                    setError('البريد أو كلمة السر خاطئة');
+                    return;
                 }
+                setCurrentUser(user);
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                setPage('dashboard');
+                setEmail('');
+                setPassword('');
             };
 
-            const handleAnswer = (index) => {
-                if (index === questions[currentQuestion].correct) {
-                    setScore(score + 1);
-                }
-                if (currentQuestion < questions.length - 1) {
-                    setCurrentQuestion(currentQuestion + 1);
-                } else {
-                    alert(`تم إنهاء الاختبار! حصلت على ${score + (index === questions[currentQuestion].correct ? 1 : 0)} من ${questions.length}`);
-                    setCurrentQuestion(0);
-                    setScore(0);
-                }
+            const handleLogout = () => {
+                setCurrentUser(null);
+                localStorage.removeItem('currentUser');
+                setPage('home');
             };
 
-            if (!isLoggedIn) {
+            // الصفحة الرئيسية
+            if (page === 'home' && !currentUser) {
                 return e('div', { className: 'min-h-screen bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center p-4' },
                     e('div', { className: 'bg-white rounded-lg shadow-2xl p-8 w-full max-w-md' },
-                        e('h1', { className: 'text-3xl font-bold text-center mb-2 text-gray-800' }, '🎓 Quant Master'),
-                        e('p', { className: 'text-center text-gray-600 mb-6' }, 'منصة تعليمية ذكية'),
+                        e('h1', { className: 'text-4xl font-bold text-center mb-2 text-gray-800' }, '🎓 Quant Master'),
+                        e('p', { className: 'text-center text-gray-600 mb-2 text-lg' }, 'منصة القدرات الكمي المتقدمة'),
+                        e('p', { className: 'text-center text-blue-600 mb-8 font-semibold' }, '🏆 نظام تعلم ذكي وتكيفي'),
+                        e('div', { className: 'space-y-3' },
+                            e('button', {
+                                onClick: () => setPage('login'),
+                                className: 'w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition'
+                            }, '🔑 تسجيل الدخول'),
+                            e('button', {
+                                onClick: () => setPage('register'),
+                                className: 'w-full bg-green-600 text-white font-bold py-3 rounded-lg hover:bg-green-700 transition'
+                            }, '📝 إنشاء حساب جديد')
+                        )
+                    )
+                );
+            }
+
+            // صفحة التسجيل
+            if (page === 'register' && !currentUser) {
+                return e('div', { className: 'min-h-screen bg-gradient-to-br from-green-600 to-blue-600 flex items-center justify-center p-4' },
+                    e('div', { className: 'bg-white rounded-lg shadow-2xl p-8 w-full max-w-md' },
+                        e('h2', { className: 'text-3xl font-bold text-center mb-6 text-gray-800' }, '📝 إنشاء حساب جديد'),
+                        e('input', {
+                            type: 'text',
+                            placeholder: 'اسم المستخدم',
+                            value: username,
+                            onChange: (evt) => setUsername(evt.target.value),
+                            className: 'w-full p-3 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-green-600'
+                        }),
+                        e('input', {
+                            type: 'email',
+                            placeholder: 'البريد الإلكتروني',
+                            value: email,
+                            onChange: (evt) => setEmail(evt.target.value),
+                            className: 'w-full p-3 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-green-600'
+                        }),
+                        e('input', {
+                            type: 'password',
+                            placeholder: 'كلمة السر',
+                            value: password,
+                            onChange: (evt) => setPassword(evt.target.value),
+                            className: 'w-full p-3 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-green-600'
+                        }),
+                        error && e('p', { className: error.includes('✅') ? 'text-green-600 font-semibold mb-4 text-center' : 'text-red-600 font-semibold mb-4 text-center' }, error),
+                        e('button', {
+                            onClick: handleRegister,
+                            className: 'w-full bg-green-600 text-white font-bold py-3 rounded-lg hover:bg-green-700 transition mb-3'
+                        }, 'تسجيل'),
+                        e('button', {
+                            onClick: () => { setPage('home'); setError(''); },
+                            className: 'w-full bg-gray-600 text-white font-bold py-3 rounded-lg hover:bg-gray-700 transition'
+                        }, 'العودة')
+                    )
+                );
+            }
+
+            // صفحة تسجيل الدخول
+            if (page === 'login' && !currentUser) {
+                return e('div', { className: 'min-h-screen bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center p-4' },
+                    e('div', { className: 'bg-white rounded-lg shadow-2xl p-8 w-full max-w-md' },
+                        e('h2', { className: 'text-3xl font-bold text-center mb-6 text-gray-800' }, '🔑 تسجيل الدخول'),
                         e('input', {
                             type: 'email',
                             placeholder: 'البريد الإلكتروني',
@@ -85,53 +291,116 @@
                             onChange: (evt) => setPassword(evt.target.value),
                             className: 'w-full p-3 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-600'
                         }),
+                        error && e('p', { className: 'text-red-600 font-semibold mb-4 text-center' }, error),
                         e('button', {
                             onClick: handleLogin,
-                            className: 'w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition'
-                        }, 'تسجيل الدخول'),
-                        e('p', { className: 'text-center text-gray-600 mt-4 text-sm' }, 'اختبر: test@example.com / password')
+                            className: 'w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition mb-3'
+                        }, 'دخول'),
+                        e('button', {
+                            onClick: () => { setPage('home'); setError(''); },
+                            className: 'w-full bg-gray-600 text-white font-bold py-3 rounded-lg hover:bg-gray-700 transition'
+                        }, 'العودة')
                     )
                 );
             }
 
-            return e('div', { className: 'min-h-screen bg-gradient-to-br from-blue-600 to-purple-600 p-4' },
-                e('div', { className: 'max-w-2xl mx-auto' },
-                    e('div', { className: 'bg-white rounded-lg shadow-2xl p-8 mb-4' },
-                        e('div', { className: 'flex justify-between items-center mb-6' },
-                            e('h1', { className: 'text-3xl font-bold text-gray-800' }, '🎓 Quant Master'),
-                            e('button', {
-                                onClick: () => setIsLoggedIn(false),
-                                className: 'bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600'
-                            }, 'تسجيل خروج')
-                        ),
-                        e('p', { className: 'text-gray-600' }, `مرحباً: ${email}`)
-                    ),
-                    e('div', { className: 'bg-white rounded-lg shadow-2xl p-8' },
-                        e('div', { className: 'mb-6' },
-                            e('div', { className: 'flex justify-between items-center mb-4' },
-                                e('h2', { className: 'text-2xl font-bold text-gray-800' }, `السؤال ${currentQuestion + 1} من ${questions.length}`),
-                                e('span', { className: 'text-xl font-bold text-green-600' }, `النقاط: ${score}`)
-                            ),
-                            e('div', { className: 'w-full bg-gray-200 rounded-full h-2' },
-                                e('div', {
-                                    className: 'bg-blue-600 h-2 rounded-full',
-                                    style: { width: `${((currentQuestion + 1) / questions.length) * 100}%` }
-                                })
+            // لوحة المعلومات
+            if (page === 'dashboard' && currentUser) {
+                return e('div', { className: 'min-h-screen bg-gradient-to-br from-blue-600 to-purple-600 p-4' },
+                    e('div', { className: 'max-w-6xl mx-auto' },
+                        e('div', { className: 'bg-white rounded-lg shadow-2xl p-8 mb-6' },
+                            e('div', { className: 'flex justify-between items-center' },
+                                e('div', null,
+                                    e('h1', { className: 'text-4xl font-bold text-gray-800' }, '🎓 Quant Master'),
+                                    e('p', { className: 'text-gray-600 mt-2' }, `👤 مرحباً ${currentUser.username}`)
+                                ),
+                                e('button', {
+                                    onClick: handleLogout,
+                                    className: 'bg-red-500 text-white px-6 py-2 rounded-lg hover:bg-red-600 transition'
+                                }, '🚪 تسجيل خروج')
                             )
                         ),
-                        e('p', { className: 'text-xl font-semibold mb-6 text-gray-800' }, questions[currentQuestion].question),
-                        e('div', { className: 'grid grid-cols-1 gap-4' },
-                            questions[currentQuestion].options.map((option, index) =>
-                                e('button', {
-                                    key: index,
-                                    onClick: () => handleAnswer(index),
-                                    className: 'p-4 bg-gray-100 hover:bg-blue-500 hover:text-white rounded-lg font-semibold transition text-right'
-                                }, option)
+                        e('div', { className: 'grid grid-cols-1 lg:grid-cols-3 gap-6' },
+                            // الجانب الأيسر: المهارات
+                            e('div', { className: 'lg:col-span-2' },
+                                e('h2', { className: 'text-2xl font-bold text-white mb-4' }, '📚 اختر المهارة الرئيسية'),
+                                e('div', { className: 'grid grid-cols-2 gap-4' },
+                                    SKILLS_DATA.subjects[0].skills.map(skill =>
+                                        e('button', {
+                                            key: skill.id,
+                                            onClick: () => setSelectedSkill(skill),
+                                            className: `bg-white rounded-lg p-6 hover:shadow-lg transition cursor-pointer border-2 ${selectedSkill?.id === skill.id ? 'border-blue-600' : 'border-gray-200'}`
+                                        },
+                                            e('div', { className: 'text-3xl mb-2' }, skill.emoji),
+                                            e('h3', { className: 'font-bold text-gray-800 mb-2' }, skill.name),
+                                            e('p', { className: 'text-sm text-gray-600' }, skill.description)
+                                        )
+                                    )
+                                )
+                            ),
+                            // الجانب الأيمن: المستويات
+                            e('div', null,
+                                e('h2', { className: 'text-2xl font-bold text-white mb-4' }, '📊 اختر المستوى'),
+                                e('div', { className: 'space-y-3' },
+                                    SKILLS_DATA.levels.map(level =>
+                                        e('button', {
+                                            key: level.id,
+                                            onClick: () => setSelectedLevel(level),
+                                            disabled: !selectedSkill,
+                                            className: `w-full bg-white rounded-lg p-4 hover:shadow-lg transition cursor-pointer border-2 ${selectedLevel?.id === level.id ? 'border-blue-600' : 'border-gray-200'} ${!selectedSkill ? 'opacity-50 cursor-not-allowed' : ''}`
+                                        },
+                                            e('div', { className: 'text-3xl mb-2' }, level.emoji),
+                                            e('h3', { className: 'font-bold text-gray-800' }, level.name),
+                                            e('p', { className: 'text-sm text-gray-600' }, `${level.questionsCount} سؤال`)
+                                        )
+                                    )
+                                ),
+                                selectedSkill && selectedLevel && e('button', {
+                                    onClick: () => setPage('quiz'),
+                                    className: 'w-full mt-6 bg-green-600 text-white font-bold py-3 rounded-lg hover:bg-green-700 transition'
+                                }, '🚀 ابدأ الاختبار')
                             )
                         )
                     )
-                )
-            );
+                );
+            }
+
+            // صفحة الاختبار
+            if (page === 'quiz' && currentUser && selectedSkill && selectedLevel) {
+                return e('div', { className: 'min-h-screen bg-gradient-to-br from-blue-600 to-purple-600 p-4' },
+                    e('div', { className: 'max-w-3xl mx-auto' },
+                        e('div', { className: 'bg-white rounded-lg shadow-2xl p-8' },
+                            e('div', { className: 'mb-6' },
+                                e('h2', { className: 'text-2xl font-bold text-gray-800 mb-4' }, 
+                                    `${selectedSkill.emoji} ${selectedSkill.name} - ${selectedLevel.emoji} ${selectedLevel.name}`
+                                ),
+                                e('div', { className: 'w-full bg-gray-200 rounded-full h-3' },
+                                    e('div', {
+                                        className: 'bg-blue-600 h-3 rounded-full transition-all duration-300',
+                                        style: { width: '25%' }
+                                    })
+                                )
+                            ),
+                            e('p', { className: 'text-lg font-semibold mb-4 text-gray-800' }, 'السؤال الأول من 20'),
+                            e('p', { className: 'text-lg mb-6 text-gray-700' }, 'هذا مثال توضيحي للاختبار'),
+                            e('div', { className: 'space-y-3 mb-6' },
+                                ['الإجابة أ', 'الإجابة ب', 'الإجابة ج', 'الإجابة د'].map((option, i) =>
+                                    e('button', {
+                                        key: i,
+                                        className: 'w-full p-4 bg-gray-100 hover:bg-blue-500 hover:text-white rounded-lg font-semibold transition text-right'
+                                    }, option)
+                                )
+                            ),
+                            e('button', {
+                                onClick: () => { setPage('dashboard'); setSelectedSkill(null); setSelectedLevel(null); },
+                                className: 'w-full bg-red-500 text-white font-bold py-3 rounded-lg hover:bg-red-600 transition'
+                            }, '← العودة')
+                        )
+                    )
+                );
+            }
+
+            return null;
         }
 
         ReactDOM.render(e(App), document.getElementById('root'));

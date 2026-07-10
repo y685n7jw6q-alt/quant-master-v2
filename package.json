@@ -1,0 +1,38 @@
+{
+  "name": "quant-master-v2",
+  "version": "1.0.0",
+  "description": "منصة تعليمية ذكية للرياضيات والعلوم",
+  "private": false,
+  "homepage": "https://y685n7jw6q-alt.github.io/quant-master-v2",
+  "engines": {
+    "node": "16.x",
+    "npm": "8.x"
+  },
+  "scripts": {
+    "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm start\"",
+    "start": "cd frontend && npm start",
+    "build": "cd frontend && npm run build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d frontend/build",
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "test": "cd frontend && npm test",
+    "eject": "cd frontend && npm run eject"
+  },
+  "dependencies": {
+    "concurrently": "^7.6.0",
+    "gh-pages": "^5.0.0"
+  },
+  "devDependencies": {},
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

@@ -1,0 +1,412 @@
+{
+  "examinationSystem": {
+    "description": "نظام الامتحانات - توليد ونإدارة اختبارات 50 سؤال",
+    "version": "1.0.0",
+    "purpose": "تقييم إتقان الطالب للمهارة من خلال اختبار شامل",
+    "examStructure": {
+      "totalQuestions": 50,
+      "timeLimit": "60 دقيقة",
+      "passingScore": "80%",
+      "distribution": {
+        "foundation": {
+          "count": 10,
+          "percentage": "20%",
+          "timePerQuestion": "1 دقيقة",
+          "totalTime": "10 دقائق"
+        },
+        "basic": {
+          "count": 10,
+          "percentage": "20%",
+          "timePerQuestion": "1.5 دقيقة",
+          "totalTime": "15 دقائق"
+        },
+        "intermediate": {
+          "count": 10,
+          "percentage": "20%",
+          "timePerQuestion": "2 دقائق",
+          "totalTime": "20 دقائق"
+        },
+        "advanced": {
+          "count": 10,
+          "percentage": "20%",
+          "timePerQuestion": "2.5 دقيقة",
+          "totalTime": "25 دقائق"
+        },
+        "qudrat": {
+          "count": 10,
+          "percentage": "20%",
+          "timePerQuestion": "3 دقائق",
+          "totalTime": "30 دقائق"
+        }
+      },
+      "totalTimeCalculation": "10 + 15 + 20 + 25 + 30 = 100 دقيقة مع وقت للمراجعة"
+    },
+    "examTypes": [
+      {
+        "type": "Diagnostic Exam",
+        "purpose": "قياس المستوى الأولي",
+        "structure": "5 أسئلة من كل مستوى (25 سؤال)",
+        "duration": "30 دقيقة",
+        "feedback": "تفاصيلي جداً"
+      },
+      {
+        "type": "Practice Exam",
+        "purpose": "التدريب والممارسة",
+        "structure": "50 سؤال موزعة بالكامل",
+        "duration": "60 دقيقة",
+        "feedback": "فوري مع شرح"
+      },
+      {
+        "type": "Final Exam",
+        "purpose": "تقييم نهائي",
+        "structure": "50 سؤال موزعة بالكامل",
+        "duration": "60 دقيقة",
+        "feedback": "بعد انتهاء الامتحان"
+      },
+      {
+        "type": "Remedial Exam",
+        "purpose": "إعادة تعليم",
+        "structure": "10 أسئلة علاجية من المستويات الأساسية",
+        "duration": "15 دقيقة",
+        "feedback": "فوري ومفصل"
+      },
+      {
+        "type": "Review Exam",
+        "purpose": "مراجعة دورية",
+        "structure": "25 سؤال (50% من الأسئلة السابقة)",
+        "duration": "30 دقيقة",
+        "feedback": "مقارن مع الأداء السابق"
+      }
+    ],
+    "examGeneration": {
+      "algorithm": [
+        {
+          "step": 1,
+          "name": "اختيار نوع الامتحان",
+          "action": "حدد نوع الامتحان بناءً على الهدف"
+        },
+        {
+          "step": 2,
+          "name": "تحديد الموضوع والمستوى",
+          "action": "اختر المهارة ومستويات الصعوبة"
+        },
+        {
+          "step": 3,
+          "name": "اختيار الأسئلة",
+          "action": "اختر أسئلة عشوائية من البنك موزعة حسب الصعوبة"
+        },
+        {
+          "step": 4,
+          "name": "التحقق من التنوع",
+          "action": "تأكد من عدم تكرار نفس الموضوع أو السيناريو"
+        },
+        {
+          "step": 5,
+          "name": "ترتيب الأسئلة",
+          "action": "رتب الأسئلة من الأسهل للأصعب"
+        },
+        {
+          "step": 6,
+          "name": "إنشاء ورقة الإجابات",
+          "action": "أنشئ ورقة إجابات موحدة"
+        },
+        {
+          "step": 7,
+          "name": "توليد النسخة النهائية",
+          "action": "اعمل نسخة نهائية جاهزة للاستخدام"
+        }
+      ]
+    },
+    "scoringSystem": {
+      "description": "نظام التصحيح والدرجات",
+      "basicScoring": {
+        "pointsPerQuestion": 2,
+        "maxScore": 100,
+        "formula": "(عدد الإجابات الصحيحة × 2)",
+        "example": "40 سؤال صحيح × 2 = 80/100"
+      },
+      "advancedScoring": {
+        "description": "نظام تصحيح متقدم يأخذ في الاعتبار مستوى الصعوبة",
+        "scaling": {
+          "foundation": 1,
+          "basic": 1.5,
+          "intermediate": 2,
+          "advanced": 2.5,
+          "qudrat": 3
+        },
+        "formula": "∑(correctAnswer × difficultyMultiplier) / totalPoints × 100",
+        "example": {
+          "foundation_correct": "8 × 1 = 8",
+          "basic_correct": "8 × 1.5 = 12",
+          "intermediate_correct": "8 × 2 = 16",
+          "advanced_correct": "8 × 2.5 = 20",
+          "qudrat_correct": "8 × 3 = 24",
+          "totalPoints": 80,
+          "finalScore": "80 / 100 = 80%"
+        }
+      }
+    },
+    "performanceAnalysis": {
+      "description": "تحليل أداء الطالب في الامتحان",
+      "metrics": [
+        {
+          "metric": "Overall Score",
+          "description": "الدرجة الكلية",
+          "benchmark": "80% للنجاح"
+        },
+        {
+          "metric": "Performance by Difficulty",
+          "description": "الأداء حسب مستوى الصعوبة",
+          "analysis": "تحديد المستويات التي يواجه فيها الطالب صعوبة"
+        },
+        {
+          "metric": "Time Management",
+          "description": "إدارة الزمن",
+          "analysis": "هل أنهى الامتحان في الوقت المحدد؟"
+        },
+        {
+          "metric": "Common Wrong Answers",
+          "description": "الإجابات الخاطئة المتكررة",
+          "analysis": "أي سؤال فشل فيه معظم الطلاب؟"
+        },
+        {
+          "metric": "Skill Mastery",
+          "description": "إتقان المهارة",
+          "analysis": "هل أتقن الطالب المهارة بشكل كامل؟"
+        }
+      ]
+    },
+    "feedbackReport": {
+      "description": "تقرير التغذية الراجعة للطالب",
+      "sections": [
+        {
+          "section": "نتائجك",
+          "content": {
+            "score": "درجتك: 80/100",
+            "level": "المستوى: متوسط",
+            "comparison": "أفضل من 65% من الطلاب"
+          }
+        },
+        {
+          "section": "الأداء حسب المستوى",
+          "content": {
+            "foundation": "✓ ممتاز (10/10)",
+            "basic": "✓ جيد جداً (9/10)",
+            "intermediate": "⚠️ متوسط (6/10)",
+            "advanced": "⚠️ ضعيف (4/10)",
+            "qudrat": "❌ ضعيف جداً (2/10)"
+          }
+        },
+        {
+          "section": "النقاط القوية",
+          "content": [
+            "✓ أتقنت الأساسيات بشكل جيد",
+            "✓ سرعتك في الإجابة ممتازة",
+            "✓ فهمك للمفاهيم الأساسية قوي"
+          ]
+        },
+        {
+          "section": "نقاط التحسين",
+          "content": [
+            "⚠️ تحتاج لتحسين المستويات المتقدمة",
+            "⚠️ بعض الأخطاء الحسابية شائعة",
+            "⚠️ الأسئلة المركبة تحتاج تدريب إضافي"
+          ]
+        },
+        {
+          "section": "التوصيات",
+          "content": [
+            "✓ ركز على المستويات Intermediate و Advanced",
+            "✓ مراجعة الأخطاء الشائعة التي ظهرت",
+            "✓ قم بـ 3 امتحانات إضافية قبل إعادة الاختبار"
+          ]
+        }
+      ]
+    },
+    "masteryLevels": {
+      "description": "مستويات الإتقان بناءً على درجة الامتحان",
+      "levels": [
+        {
+          "level": "Not Yet",
+          "range": "0-60%",
+          "description": "لم يتقن بعد",
+          "action": "إعادة تدريس شامل",
+          "nextStep": "خذ دورة تمهيدية"
+        },
+        {
+          "level": "Developing",
+          "range": "61-75%",
+          "description": "في طريق التطور",
+          "action": "تدريس علاجي",
+          "nextStep": "أمتحانات إضافية"
+        },
+        {
+          "level": "Proficient",
+          "range": "76-85%",
+          "description": "كفء",
+          "action": "مراجعة نقاط محددة",
+          "nextStep": "الانتقال للمهارة التالية"
+        },
+        {
+          "level": "Mastered",
+          "range": "86-100%",
+          "description": "متقن",
+          "action": "تحديات إضافية",
+          "nextStep": "مهارات متقدمة"
+        }
+      ]
+    },
+    "examRecords": {
+      "description": "سجلات الامتحانات للطالب",
+      "tracking": [
+        {
+          "field": "examId",
+          "description": "معرف الامتحان الفريد"
+        },
+        {
+          "field": "examDate",
+          "description": "تاريخ الامتحان"
+        },
+        {
+          "field": "examType",
+          "description": "نوع الامتحان"
+        },
+        {
+          "field": "skillId",
+          "description": "معرف المهارة"
+        },
+        {
+          "field": "score",
+          "description": "الدرجة"
+        },
+        {
+          "field": "timeSpent",
+          "description": "الزمن المستغرق"
+        },
+        {
+          "field": "correctAnswers",
+          "description": "عدد الإجابات الصحيحة"
+        },
+        {
+          "field": "masteryLevel",
+          "description": "مستوى الإتقان"
+        },
+        {
+          "field": "feedback",
+          "description": "التغذية الراجعة"
+        },
+        {
+          "field": "recommendations",
+          "description": "التوصيات"
+        }
+      ]
+    },
+    "progressTracking": {
+      "description": "تتبع تقدم الطالب عبر الامتحانات",
+      "example": {
+        "student": "أحمد محمد",
+        "skill": "النسبة المئوية",
+        "exams": [
+          {
+            "exam": 1,
+            "date": "2024-01-01",
+            "score": 65,
+            "level": "Developing"
+          },
+          {
+            "exam": 2,
+            "date": "2024-01-10",
+            "score": 72,
+            "level": "Developing"
+          },
+          {
+            "exam": 3,
+            "date": "2024-01-20",
+            "score": 78,
+            "level": "Proficient"
+          },
+          {
+            "exam": 4,
+            "date": "2024-01-30",
+            "score": 88,
+            "level": "Mastered"
+          }
+        ],
+        "trend": "تحسن مستمر ✓",
+        "improvement": "+23%"
+      }
+    },
+    "examRetake": {
+      "description": "نظام إعادة الامتحان",
+      "rules": [
+        {
+          "rule": "عدد المحاولات",
+          "value": "حد أقصى 3 محاولات"
+        },
+        {
+          "rule": "الوقت بين المحاولات",
+          "value": "3 أيام على الأقل"
+        },
+        {
+          "rule": "شرط الإعادة",
+          "value": "إذا كانت الدرجة < 80%"
+        },
+        {
+          "rule": "أسئلة جديدة",
+          "value": "نعم، أسئلة مختلفة تماماً"
+        },
+        {
+          "rule": "الدرجة النهائية",
+          "value": "أفضل درجة من المحاولات"
+        }
+      ]
+    },
+    "examDifficultySetting": {
+      "description": "ضبط صعوبة الامتحان",
+      "adaptiveMode": {
+        "enabled": true,
+        "description": "النظام يضبط صعوبة الأسئلة بناءً على أداء الطالب",
+        "mechanism": [
+          {
+            "event": "إجابة صحيحة",
+            "action": "زيادة صعوبة السؤال التالي"
+          },
+          {
+            "event": "إجابة خاطئة",
+            "action": "تقليل صعوبة السؤال التالي"
+          }
+        ]
+      },
+      "fixedMode": {
+        "enabled": true,
+        "description": "امتحان بصعوبة محددة مسبقاً"
+      }
+    },
+    "examAggregation": {
+      "description": "تجميع نتائج الامتحانات لجميع الطلاب",
+      "classStatistics": {
+        "averageScore": "75%",
+        "medianScore": "76%",
+        "highestScore": "98%",
+        "lowestScore": "42%",
+        "passRate": "85%",
+        "masteryRate": "45%"
+      },
+      "skillAnalysis": {
+        "averageByDifficulty": {
+          "foundation": "92%",
+          "basic": "85%",
+          "intermediate": "72%",
+          "advanced": "58%",
+          "qudrat": "35%"
+        }
+      },
+      "insights": [
+        "معظم الطلاب يتقنون الأساسيات بشكل جيد",
+        "هناك انخفاض كبير في الأداء من Intermediate إلى Advanced",
+        "الأسئلة الـ Qudrat صعبة جداً على الطلاب",
+        "بحاجة إلى تدريب إضافي على المستويات العليا"
+      ]
+    }
+  }
+}

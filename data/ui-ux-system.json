@@ -1,0 +1,758 @@
+{
+  "uiUxSystem": {
+    "description": "نظام الواجهة والتجربة المستخدم - تصميم شامل للتطبيق",
+    "version": "1.0.0",
+    "purpose": "توفير واجهة سهلة وفعالة لجميع المستخدمين",
+    "designPrinciples": [
+      "البساطة والوضوح",
+      "سهولة الاستخدام",
+      "الاستجابة (Responsive)",
+      "الوصول (Accessibility)",
+      "الأداء السريع",
+      "التصميم الحديث"
+    ],
+    "userRoles": [
+      {
+        "role": "طالب",
+        "responsibilities": [
+          "حل أسئلة",
+          "إجراء امتحانات",
+          "عرض النتائج",
+          "مراجعة الحلول"
+        ]
+      },
+      {
+        "role": "مدرس",
+        "responsibilities": [
+          "إنشاء أسئلة",
+          "إدارة الفصول",
+          "عرض تقارير الطلاب",
+          "تقديم تعليقات"
+        ]
+      },
+      {
+        "role": "مسؤول",
+        "responsibilities": [
+          "إدارة النظام",
+          "إدارة المستخدمين",
+          "إحصائيات شاملة",
+          "إعدادات النظام"
+        ]
+      }
+    ],
+    "pages": {
+      "landing": {
+        "name": "الصفحة الرئيسية",
+        "url": "/",
+        "sections": [
+          {
+            "section": "Hero Section",
+            "content": {
+              "title": "نظام تطوير القدرات الكمية",
+              "subtitle": "تعلم وتقيّم نفسك في القدرات الرياضية",
+              "cta": "ابدأ الآن",
+              "image": "hero-image.png"
+            }
+          },
+          {
+            "section": "Features",
+            "items": [
+              {
+                "feature": "أسئلة ذكية",
+                "icon": "smart-question",
+                "description": "50 سؤال موزعة بذكاء حسب الصعوبة"
+              },
+              {
+                "feature": "تقييم فوري",
+                "icon": "instant-feedback",
+                "description": "احصل على نتائجك فوراً مع تحليل مفصل"
+              },
+              {
+                "feature": "تقدم شامل",
+                "icon": "progress-track",
+                "description": "تتبع تقدمك على مدار الزمن"
+              },
+              {
+                "feature": "حلول مفصلة",
+                "icon": "detailed-solution",
+                "description": "فهم كل خطوة من خطوات الحل"
+              }
+            ]
+          },
+          {
+            "section": "CTA",
+            "content": "سجل الآن واكتشف مستواك"
+          }
+        ]
+      },
+      "login": {
+        "name": "تسجيل الدخول",
+        "url": "/login",
+        "components": [
+          {
+            "component": "Form",
+            "fields": [
+              {
+                "name": "email",
+                "label": "البريد الإلكتروني",
+                "type": "email",
+                "placeholder": "your@email.com",
+                "validation": "required|email"
+              },
+              {
+                "name": "password",
+                "label": "كلمة المرور",
+                "type": "password",
+                "placeholder": "••••••••",
+                "validation": "required|min:6"
+              }
+            ]
+          },
+          {
+            "component": "Remember Me",
+            "text": "تذكرني"
+          },
+          {
+            "component": "Submit Button",
+            "text": "دخول"
+          },
+          {
+            "component": "Links",
+            "items": [
+              {
+                "text": "هل نسيت كلمة المرور؟",
+                "url": "/forgot-password"
+              },
+              {
+                "text": "إنشاء حساب جديد",
+                "url": "/signup"
+              }
+            ]
+          }
+        ]
+      },
+      "signup": {
+        "name": "إنشاء حساب",
+        "url": "/signup",
+        "components": [
+          {
+            "component": "Form",
+            "fields": [
+              {
+                "name": "fullname",
+                "label": "الاسم الكامل",
+                "type": "text",
+                "placeholder": "أحمد محمد",
+                "validation": "required"
+              },
+              {
+                "name": "email",
+                "label": "البريد الإلكتروني",
+                "type": "email",
+                "placeholder": "your@email.com",
+                "validation": "required|email|unique"
+              },
+              {
+                "name": "password",
+                "label": "كلمة المرور",
+                "type": "password",
+                "placeholder": "••••••••",
+                "validation": "required|min:8|strong"
+              },
+              {
+                "name": "confirmPassword",
+                "label": "تأكيد كلمة المرور",
+                "type": "password",
+                "placeholder": "••••••••",
+                "validation": "required|match:password"
+              },
+              {
+                "name": "userType",
+                "label": "نوع المستخدم",
+                "type": "select",
+                "options": [
+                  {"value": "student", "label": "طالب"},
+                  {"value": "teacher", "label": "مدرس"}
+                ],
+                "validation": "required"
+              }
+            ]
+          },
+          {
+            "component": "Terms",
+            "text": "أوافق على الشروط والأحكام"
+          },
+          {
+            "component": "Submit Button",
+            "text": "إنشاء حساب"
+          }
+        ]
+      },
+      "dashboard": {
+        "name": "لوحة التحكم",
+        "url": "/dashboard",
+        "layout": "sidebar + main",
+        "sections": [
+          {
+            "section": "Header",
+            "components": [
+              {
+                "component": "Logo",
+                "image": "logo.png"
+              },
+              {
+                "component": "Search Bar",
+                "placeholder": "ابحث عن مهارة أو سؤال"
+              },
+              {
+                "component": "User Menu",
+                "items": [
+                  {"text": "الملف الشخصي", "icon": "profile"},
+                  {"text": "الإعدادات", "icon": "settings"},
+                  {"text": "خروج", "icon": "logout"}
+                ]
+              }
+            ]
+          },
+          {
+            "section": "Sidebar",
+            "items": [
+              {
+                "item": "الرئيسية",
+                "icon": "home",
+                "url": "/dashboard",
+                "badge": null
+              },
+              {
+                "item": "المهارات",
+                "icon": "skills",
+                "url": "/skills",
+                "badge": null
+              },
+              {
+                "item": "الامتحانات",
+                "icon": "exam",
+                "url": "/exams",
+                "badge": "3"
+              },
+              {
+                "item": "النتائج",
+                "icon": "results",
+                "url": "/results",
+                "badge": null
+              },
+              {
+                "item": "التقدم",
+                "icon": "progress",
+                "url": "/progress",
+                "badge": null
+              }
+            ]
+          },
+          {
+            "section": "Main Content",
+            "cards": [
+              {
+                "card": "Quick Stats",
+                "stats": [
+                  {
+                    "title": "إجمالي الأسئلة",
+                    "value": "45",
+                    "icon": "questions"
+                  },
+                  {
+                    "title": "النسبة المئوية الصحيحة",
+                    "value": "80%",
+                    "icon": "success"
+                  },
+                  {
+                    "title": "المهارات المتقنة",
+                    "value": "3",
+                    "icon": "mastery"
+                  }
+                ]
+              },
+              {
+                "card": "Recent Activities",
+                "items": [
+                  {
+                    "activity": "امتحان النسبة المئوية",
+                    "score": "85%",
+                    "date": "اليوم"
+                  },
+                  {
+                    "activity": "حل 5 أسئلة",
+                    "score": "100%",
+                    "date": "أمس"
+                  }
+                ]
+              },
+              {
+                "card": "Next Steps",
+                "recommendations": [
+                  "أكمل المهارات المتقدمة",
+                  "راجع الأخطاء الشائعة",
+                  "حل امتحان جديد"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "skills": {
+        "name": "المهارات",
+        "url": "/skills",
+        "layout": "grid",
+        "components": [
+          {
+            "component": "Filter",
+            "options": [
+              {"label": "الكل", "value": "all"},
+              {"label": "مبتدأ", "value": "beginner"},
+              {"label": "متوسط", "value": "intermediate"},
+              {"label": "متقدم", "value": "advanced"}
+            ]
+          },
+          {
+            "component": "Skill Card",
+            "layout": "grid (3 columns)",
+            "card": {
+              "title": "اسم المهارة",
+              "icon": "skill-icon",
+              "difficulty": "متوسط",
+              "masteryLevel": "75%",
+              "progressBar": {
+                "value": 75,
+                "color": "blue"
+              },
+              "actions": [
+                {
+                  "action": "ابدأ",
+                  "type": "primary",
+                  "url": "/skill/1/start"
+                },
+                {
+                  "action": "تفاصيل",
+                  "type": "secondary",
+                  "url": "/skill/1/details"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "exam": {
+        "name": "الامتحان",
+        "url": "/exam/:examId",
+        "layout": "full-screen",
+        "sections": [
+          {
+            "section": "Timer",
+            "display": "60:00",
+            "alert": "warning at 10 min"
+          },
+          {
+            "section": "Progress",
+            "items": [
+              {
+                "status": "answered",
+                "count": 15,
+                "color": "green"
+              },
+              {
+                "status": "unanswered",
+                "count": 35,
+                "color": "gray"
+              }
+            ]
+          },
+          {
+            "section": "Question Panel",
+            "components": [
+              {
+                "component": "Question Number",
+                "text": "السؤال 1 من 50"
+              },
+              {
+                "component": "Question Text",
+                "content": "نص السؤال هنا"
+              },
+              {
+                "component": "Options",
+                "layout": "vertical",
+                "items": [
+                  {
+                    "option": "A",
+                    "text": "الخيار الأول"
+                  },
+                  {
+                    "option": "B",
+                    "text": "الخيار الثاني"
+                  },
+                  {
+                    "option": "C",
+                    "text": "الخيار الثالث"
+                  },
+                  {
+                    "option": "D",
+                    "text": "الخيار الرابع"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "section": "Navigation",
+            "buttons": [
+              {
+                "text": "السابق",
+                "type": "secondary",
+                "action": "previous"
+              },
+              {
+                "text": "التالي",
+                "type": "primary",
+                "action": "next"
+              },
+              {
+                "text": "إنهاء الامتحان",
+                "type": "danger",
+                "action": "submit"
+              }
+            ]
+          },
+          {
+            "section": "Quick Navigation",
+            "content": "شبكة أسئلة سريعة للتنقل"
+          }
+        ]
+      },
+      "results": {
+        "name": "النتائج",
+        "url": "/results/:examId",
+        "sections": [
+          {
+            "section": "Score Card",
+            "display": {
+              "score": "85/100",
+              "percentage": "85%",
+              "level": "Proficient",
+              "color": "green"
+            }
+          },
+          {
+            "section": "Detailed Analysis",
+            "items": [
+              {
+                "metric": "الإجابات الصحيحة",
+                "value": "42/50",
+                "percentage": "84%"
+              },
+              {
+                "metric": "متوسط الزمن",
+                "value": "72 ثانية",
+                "status": "أبطأ من المتوقع"
+              },
+              {
+                "metric": "أداء حسب الصعوبة",
+                "breakdown": {
+                  "foundation": "95%",
+                  "basic": "90%",
+                  "intermediate": "75%",
+                  "advanced": "60%",
+                  "qudrat": "40%"
+                }
+              }
+            ]
+          },
+          {
+            "section": "Performance by Scenario",
+            "chart": "bar chart",
+            "data": [
+              {"scenario": "Shopping", "score": "90%"},
+              {"scenario": "Business", "score": "80%"},
+              {"scenario": "Statistics", "score": "75%"}
+            ]
+          },
+          {
+            "section": "Wrong Answers",
+            "items": [
+              {
+                "question": "السؤال 5",
+                "yourAnswer": "C",
+                "correctAnswer": "B",
+                "explanation": "شرح الحل"
+              }
+            ]
+          },
+          {
+            "section": "Recommendations",
+            "items": [
+              "تحسن في المستويات المتقدمة",
+              "تدرب على السيناريو البيئي",
+              "راجع الأخطاء الشائعة"
+            ]
+          },
+          {
+            "section": "Actions",
+            "buttons": [
+              {
+                "text": "عرض الحلول المفصلة",
+                "action": "view-solutions"
+              },
+              {
+                "text": "إعادة الامتحان",
+                "action": "retake-exam"
+              },
+              {
+                "text": "العودة للرئيسية",
+                "action": "go-home"
+              }
+            ]
+          }
+        ]
+      },
+      "progress": {
+        "name": "التقدم",
+        "url": "/progress",
+        "sections": [
+          {
+            "section": "Overall Progress",
+            "card": {
+              "title": "التقدم الكلي",
+              "score": "75%",
+              "level": "Proficient",
+              "chart": "radial progress"
+            }
+          },
+          {
+            "section": "Skills Progress",
+            "layout": "list",
+            "items": [
+              {
+                "skill": "النسبة المئوية",
+                "mastery": "85%",
+                "attempts": 4,
+                "bestScore": "90%",
+                "lastAttempt": "اليوم",
+                "status": "متقن"
+              },
+              {
+                "skill": "النسبة والتناسب",
+                "mastery": "72%",
+                "attempts": 3,
+                "bestScore": "80%",
+                "lastAttempt": "أمس",
+                "status": "نامٍ"
+              }
+            ]
+          },
+          {
+            "section": "Learning Journey",
+            "chart": "line chart",
+            "data": {
+              "x": ["الأسبوع 1", "الأسبوع 2", "الأسبوع 3"],
+              "series": [
+                {"name": "المهارة 1", "data": [60, 70, 85]},
+                {"name": "المهارة 2", "data": [50, 65, 72]}
+              ]
+            }
+          },
+          {
+            "section": "Milestones",
+            "items": [
+              {
+                "milestone": "إتقان المهارة الأولى",
+                "date": "15 يناير 2024",
+                "status": "completed"
+              },
+              {
+                "milestone": "الوصول إلى 100 سؤال",
+                "date": "20 يناير 2024",
+                "status": "in-progress",
+                "progress": "75/100"
+              }
+            ]
+          }
+        ]
+      },
+      "profile": {
+        "name": "الملف الشخصي",
+        "url": "/profile",
+        "sections": [
+          {
+            "section": "Personal Info",
+            "fields": [
+              {"label": "الاسم", "value": "أحمد محمد", "editable": true},
+              {"label": "البريد الإلكتروني", "value": "ahmed@email.com", "editable": false},
+              {"label": "النوع", "value": "طالب", "editable": true},
+              {"label": "تاريخ الانضمام", "value": "1 يناير 2024", "editable": false}
+            ]
+          },
+          {
+            "section": "Statistics",
+            "stats": [
+              {"label": "إجمالي الأسئلة", "value": "150"},
+              {"label": "معدل النجاح", "value": "78%"},
+              {"label": "المهارات المتقنة", "value": "3"},
+              {"label": "الوقت المستغرق", "value": "45 ساعة"}
+            ]
+          },
+          {
+            "section": "Settings",
+            "options": [
+              {
+                "option": "اللغة",
+                "value": "العربية",
+                "editable": true
+              },
+              {
+                "option": "التنبيهات",
+                "value": "مفعل",
+                "editable": true
+              },
+              {
+                "option": "المظهر",
+                "value": "فاتح",
+                "editable": true
+              }
+            ]
+          },
+          {
+            "section": "Security",
+            "buttons": [
+              {
+                "text": "تغيير كلمة المرور",
+                "action": "change-password"
+              },
+              {
+                "text": "إدارة الجلسات",
+                "action": "manage-sessions"
+              },
+              {
+                "text": "حذف الحساب",
+                "action": "delete-account",
+                "danger": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "components": {
+      "buttons": [
+        {
+          "type": "primary",
+          "label": "ابدأ",
+          "size": "medium",
+          "icon": "play"
+        },
+        {
+          "type": "secondary",
+          "label": "إلغاء",
+          "size": "medium",
+          "icon": null
+        },
+        {
+          "type": "danger",
+          "label": "حذف",
+          "size": "small",
+          "icon": "trash"
+        }
+      ],
+      "forms": [
+        {
+          "type": "text input",
+          "validation": "live",
+          "errorMessage": "مطلوب"
+        },
+        {
+          "type": "select",
+          "placeholder": "اختر من القائمة",
+          "searchable": true
+        },
+        {
+          "type": "checkbox",
+          "label": "أوافق على الشروط"
+        }
+      ],
+      "alerts": [
+        {
+          "type": "success",
+          "icon": "check",
+          "color": "green"
+        },
+        {
+          "type": "warning",
+          "icon": "warning",
+          "color": "orange"
+        },
+        {
+          "type": "error",
+          "icon": "x",
+          "color": "red"
+        }
+      ],
+      "modals": [
+        {
+          "name": "Confirm Modal",
+          "title": "تأكيد",
+          "message": "هل أنت متأكد؟",
+          "buttons": ["نعم", "لا"]
+        },
+        {
+          "name": "Solution Modal",
+          "title": "الحل المفصل",
+          "content": "خطوات الحل"
+        }
+      ]
+    },
+    "colorScheme": {
+      "primary": "#3498db",
+      "secondary": "#2ecc71",
+      "danger": "#e74c3c",
+      "warning": "#f39c12",
+      "info": "#9b59b6",
+      "light": "#ecf0f1",
+      "dark": "#34495e",
+      "success": "#27ae60"
+    },
+    "typography": {
+      "heading1": "36px, Bold, RTL",
+      "heading2": "28px, Bold, RTL",
+      "heading3": "24px, Semi-Bold, RTL",
+      "body": "16px, Regular, RTL",
+      "small": "14px, Regular, RTL",
+      "fontFamily": "Segoe UI, Tahoma, Arial"
+    },
+    "responsiveDesign": {
+      "breakpoints": {
+        "mobile": "< 768px",
+        "tablet": "768px - 1024px",
+        "desktop": "> 1024px"
+      },
+      "grids": {
+        "mobile": "1 column",
+        "tablet": "2 columns",
+        "desktop": "3-4 columns"
+      }
+    },
+    "animations": [
+      {
+        "name": "slide-in",
+        "duration": "300ms",
+        "easing": "ease-out"
+      },
+      {
+        "name": "fade-in",
+        "duration": "200ms",
+        "easing": "ease-in"
+      },
+      {
+        "name": "pulse",
+        "duration": "2s",
+        "repeat": "infinite"
+      }
+    ]
+  }
+}

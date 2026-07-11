@@ -1,0 +1,382 @@
+{
+  "questionGenerator": {
+    "description": "محرك توليد الأسئلة الذكي - يجمع بين القوالب والسيناريوهات ومستويات الصعوبة",
+    "version": "1.0.0",
+    "generationProcess": {
+      "step1": "اختيار المهارة (Skill)",
+      "step2": "اختيار عدد الأسئلة المطلوبة",
+      "step3": "توزيع الأسئلة على مستويات الصعوبة",
+      "step4": "لكل سؤال: اختيار قالب عشوائي",
+      "step5": "توليد متغيرات عشوائية",
+      "step6": "استبدال المتغيرات في الصيغة اللغوية",
+      "step7": "حساب الإجابة الصحيحة",
+      "step8": "توليد خيارات خاطئة ذكية",
+      "step9": "اخلط الخيارات",
+      "step10": "أضف حل كامل وأخطاء شائعة",
+      "step11": "تحقق من الجودة",
+      "step12": "احفظ السؤال في البنك"
+    }
+  },
+  "distributionPattern": {
+    "description": "توزيع 50 سؤال على مستويات الصعوبة",
+    "forSkill": {
+      "foundation": {
+        "count": 10,
+        "percentage": "20%",
+        "templates_used": 2,
+        "purpose": "فهم المفهوم الأساسي"
+      },
+      "basic": {
+        "count": 10,
+        "percentage": "20%",
+        "templates_used": 3,
+        "purpose": "تطبيق القانون"
+      },
+      "intermediate": {
+        "count": 15,
+        "percentage": "30%",
+        "templates_used": 4,
+        "purpose": "ربط العمليات والتفكير العميق"
+      },
+      "advanced": {
+        "count": 10,
+        "percentage": "20%",
+        "templates_used": 3,
+        "purpose": "حل مسائل معقدة"
+      },
+      "qudrat": {
+        "count": 5,
+        "percentage": "10%",
+        "templates_used": 2,
+        "purpose": "سؤال قدرات حقيقي"
+      }
+    },
+    "totalQuestions": 50
+  },
+  "randomVariableGenerator": {
+    "description": "توليد متغيرات عشوائية ضمن نطاق معين",
+    "algorithm": "Math.floor(Math.random() * (max - min + 1)) + min",
+    "features": [
+      "نطاقات مختلفة لكل متغير",
+      "حجم الخطوة (step) لضمان قيم واقعية",
+      "تجنب الأرقام التي تسبب مشاكل حسابية",
+      "ضمان عدم تكرار المتغيرات في نفس السؤال"
+    ],
+    "examples": {
+      "price": "من 50 إلى 1000 بخطوات 50",
+      "percentage": "من 5 إلى 50 بخطوات 5",
+      "quantity": "من 1 إلى 100 بخطوات 1"
+    }
+  },
+  "smartDistractorGenerator": {
+    "description": "توليد خيارات خاطئة ذكية تمثل أخطاء شائعة",
+    "strategies": [
+      {
+        "name": "Wrong Formula",
+        "description": "استخدام صيغة رياضية خاطئة شائعة",
+        "example": "جمع بدلاً من الضرب، قسمة بدلاً من الطرح"
+      },
+      {
+        "name": "Calculation Error",
+        "description": "حساب صحيح لكن بمتغيرات خاطئة",
+        "example": "استخدام المقسوم عليه بدلاً من المقسوم"
+      },
+      {
+        "name": "Partial Solution",
+        "description": "حل جزئي للمسألة (خطوة واحدة فقط)",
+        "example": "حساب الخصم بدون طرحه من السعر الأصلي"
+      },
+      {
+        "name": "Common Misconception",
+        "description": "افتراض خاطئ شائع بين الطلاب",
+        "example": "افتراض أن الخصم والزيادة يلغيان بعضهما"
+      },
+      {
+        "name": "Double or Half",
+        "description": "ضرب أو قسمة الإجابة على 2",
+        "example": "{correctAnswer} × 2 أو {correctAnswer} / 2"
+      },
+      {
+        "name": "Similar Number",
+        "description": "رقم قريب جداً من الإجابة الصحيحة",
+        "example": "correctAnswer ± 5-10% من القيمة"
+      }
+    ]
+  },
+  "solutionGenerator": {
+    "description": "توليد حل مفصل خطوة بخطوة للسؤال",
+    "components": [
+      {
+        "component": "Summary",
+        "description": "ملخص المسألة - ما هو المطلوب؟"
+      },
+      {
+        "component": "Given",
+        "description": "ما المعطيات المتوفرة؟"
+      },
+      {
+        "component": "Required",
+        "description": "ماذا نريد أن نجد؟"
+      },
+      {
+        "component": "Formula",
+        "description": "ما الصيغة المستخدمة؟"
+      },
+      {
+        "component": "Steps",
+        "description": "خطوات الحل بالتفصيل"
+      },
+      {
+        "component": "Answer",
+        "description": "الإجابة النهائية"
+      },
+      {
+        "component": "Verification",
+        "description": "التحقق من الإجابة"
+      },
+      {
+        "component": "CommonMistakes",
+        "description": "الأخطاء الشائعة التي يجب تجنبها"
+      },
+      {
+        "component": "Tips",
+        "description": "نصائح لحل مسائل مشابهة"
+      }
+    ]
+  },
+  "qualityChecks": {
+    "description": "فحوصات الجودة للسؤال قبل النشر",
+    "checks": [
+      {
+        "check": "Mathematical Validity",
+        "description": "التحقق من صحة الرياضيات",
+        "validation": "حساب الإجابة الصحيحة مرتين بطرق مختلفة"
+      },
+      {
+        "check": "Linguistic Clarity",
+        "description": "التحقق من وضوح النص العربي",
+        "validation": "قراءة السؤال والتأكد من عدم وجود أخطاء إملائية"
+      },
+      {
+        "check": "Option Validity",
+        "description": "التحقق من صحة الخيارات",
+        "validation": "تأكد أن هناك إجابة واحدة فقط صحيحة"
+      },
+      {
+        "check": "Distractor Quality",
+        "description": "التحقق من جودة الخيارات الخاطئة",
+        "validation": "الخيارات الخاطئة تمثل أخطاء شائعة"
+      },
+      {
+        "check": "Solution Completeness",
+        "description": "التحقق من اكتمال الحل",
+        "validation": "الحل يتضمن كل الخطوات والشرح"
+      },
+      {
+        "check": "Formatting",
+        "description": "التحقق من التنسيق الصحيح",
+        "validation": "الأرقام والصيغ الرياضية منسقة بشكل صحيح"
+      },
+      {
+        "check": "Difficulty Level",
+        "description": "التحقق من مستوى الصعوبة",
+        "validation": "السؤال يطابق مستوى الصعوبة المحدد"
+      }
+    ]
+  },
+  "generatedQuestionExample": {
+    "questionId": "Q_PERC_001_001",
+    "skillId": "percentage",
+    "templateId": "TMPL_PERC_001",
+    "difficulty": "foundation",
+    "scenario": "shopping",
+    "question": {
+      "text": "إذا كان سعر الكتاب 250 ريال وتم تخفيضه بنسبة 20%، فما السعر الجديد؟",
+      "languageLevel": "simple",
+      "estimatedTime": 1
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": "50 ريال",
+        "isCorrect": false,
+        "reason": "تم حساب النسبة فقط دون طرحها من السعر الأصلي"
+      },
+      {
+        "id": "B",
+        "text": "200 ريال",
+        "isCorrect": true,
+        "reason": "الحل الصحيح: 250 × (1 - 20/100) = 250 × 0.8 = 200"
+      },
+      {
+        "id": "C",
+        "text": "230 ريال",
+        "isCorrect": false,
+        "reason": "خطأ في حساب النسبة المئوية"
+      },
+      {
+        "id": "D",
+        "text": "270 ريال",
+        "isCorrect": false,
+        "reason": "تم جمع النسبة بدلاً من طرحها"
+      }
+    ],
+    "solution": {
+      "summary": "إيجاد السعر الجديد بعد تطبيق خصم 20%",
+      "given": [
+        "السعر الأصلي: 250 ريال",
+        "نسبة الخصم: 20%"
+      ],
+      "required": "السعر الجديد بعد الخصم",
+      "formula": "السعر الجديد = السعر الأصلي × (1 - النسبة المئوية / 100)",
+      "steps": [
+        {
+          "step": 1,
+          "description": "تحويل النسبة المئوية إلى عدد عشري",
+          "calculation": "20% = 20/100 = 0.2"
+        },
+        {
+          "step": 2,
+          "description": "حساب معامل الخصم",
+          "calculation": "1 - 0.2 = 0.8"
+        },
+        {
+          "step": 3,
+          "description": "ضرب السعر الأصلي بمعامل الخصم",
+          "calculation": "250 × 0.8 = 200 ريال"
+        }
+      ],
+      "answer": "200 ريال",
+      "verification": "التحقق: 250 - 50 = 200 ✓",
+      "commonMistakes": [
+        {
+          "mistake": "حساب النسبة فقط: 250 × 20/100 = 50 (خطأ)",
+          "correction": "يجب طرح النسبة من السعر الأصلي"
+        },
+        {
+          "mistake": "جمع النسبة: 250 + 50 = 300 (خطأ)",
+          "correction": "الخصم = طرح، ليس جمع"
+        },
+        {
+          "mistake": "عدم تحويل النسبة: 250 × 20 (خطأ)",
+          "correction": "تحويل النسبة: 20% = 0.2"
+        }
+      ],
+      "tips": [
+        "تذكر: الخصم يعني تقليل السعر",
+        "استخدم الصيغة: السعر الجديد = الأصلي × (1 - النسبة)",
+        "تحقق من معقولية الإجابة (يجب أن تكون أقل من الأصل)"
+      ]
+    },
+    "metadata": {
+      "createdAt": "2024-01-15",
+      "status": "published",
+      "performanceData": {
+        "timesUsed": 0,
+        "successRate": 0,
+        "averageTime": 0,
+        "discriminationIndex": 0
+      }
+    }
+  },
+  "batchGenerationSettings": {
+    "description": "إعدادات توليد دفعة من الأسئلة",
+    "parameters": [
+      {
+        "parameter": "skillId",
+        "description": "معرف المهارة"
+      },
+      {
+        "parameter": "quantity",
+        "description": "عدد الأسئلة المطلوب توليدها (افتراضي: 50)"
+      },
+      {
+        "parameter": "difficultyDistribution",
+        "description": "توزيع الأسئلة على مستويات الصعوبة"
+      },
+      {
+        "parameter": "uniquenessLevel",
+        "description": "مستوى تفرد الأسئلة (عالي/متوسط/منخفض)"
+      },
+      {
+        "parameter": "scenarioPreference",
+        "description": "تفضيل سيناريوهات معينة"
+      },
+      {
+        "parameter": "excludeTemplates",
+        "description": "قوالب يتم استبعادها"
+      }
+    ]
+  },
+  "generationStatistics": {
+    "description": "إحصائيات عملية التوليد",
+    "trackedMetrics": [
+      "عدد الأسئلة المولدة",
+      "عدد الأسئلة التي فشلت في الفحوصات",
+      "متوسط الزمن اللازم لتوليد سؤال",
+      "نسب استخدام القوالب",
+      "نسب استخدام السيناريوهات",
+      "نسب استخدام مستويات الصعوبة"
+    ]
+  },
+  "regenerationRules": {
+    "description": "قواعد إعادة توليد الأسئلة",
+    "rules": [
+      {
+        "rule": "اختبار نفس المستوى",
+        "when": "إذا أكمل الطالب المستوى",
+        "action": "توليد 10 أسئلة جديدة من نفس المستوى"
+      },
+      {
+        "rule": "إعادة المستوى",
+        "when": "إذا فشل الطالب في المستوى",
+        "action": "توليد 5 أسئلة علاجية + إعادة الاختبار"
+      },
+      {
+        "rule": "مراجعة دورية",
+        "when": "تاريخ المراجعة المحدد",
+        "action": "توليد 5 أسئلة من المستويات السابقة"
+      },
+      {
+        "rule": "عدم التكرار",
+        "when": "دائماً",
+        "action": "ضمان عدم توليد نفس السؤال مرتين في نفس الجلسة"
+      }
+    ]
+  },
+  "exportFormats": {
+    "description": "صيغ تصدير الأسئلة",
+    "formats": [
+      "JSON: تنسيق البيانات الأساسي",
+      "PDF: للطباعة",
+      "CSV: لاستيراد البيانات",
+      "XML: للتوافقية",
+      "HTML: للعرض في المتصفح"
+    ]
+  },
+  "performanceTracking": {
+    "description": "تتبع أداء الأسئلة بعد الاستخدام",
+    "metrics": [
+      {
+        "metric": "Success Rate",
+        "description": "نسبة الإجابات الصحيحة",
+        "threshold": "> 80% يعني السؤال سهل، < 20% يعني صعب جداً"
+      },
+      {
+        "metric": "Average Time",
+        "description": "متوسط الزمن اللازم للإجابة",
+        "threshold": "يجب أن يطابق المتوقع"
+      },
+      {
+        "metric": "Discrimination Index",
+        "description": "مؤشر التفريق بين الطلاب الأقوياء والضعفاء",
+        "threshold": "> 0.3 يعني السؤال جيد"
+      },
+      {
+        "metric": "Most Common Wrong Answer",
+        "description": "أكثر خيار خاطئ يتم اختياره",
+        "insight": "يساعد في تحسين الخيارات الخاطئة"
+      }
+    ]
+  }
+}

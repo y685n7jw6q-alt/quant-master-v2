@@ -1,0 +1,698 @@
+{
+  "realQuestionsExamples": {
+    "skill": "النسبة المئوية",
+    "skillId": "percentage",
+    "totalQuestions": 50,
+    "questions": [
+      {
+        "questionId": "Q_PERC_REAL_001",
+        "skillId": "percentage",
+        "templateId": "TMPL_PERC_001",
+        "difficulty": "foundation",
+        "scenario": "shopping",
+        "position": 1,
+        "question": {
+          "text": "إذا كان سعر الكتاب 100 ريال وتم تخفيضه بنسبة 20%، فما السعر الجديد؟",
+          "languageLevel": "simple",
+          "estimatedTime": 1,
+          "category": "percentage"
+        },
+        "options": [
+          {
+            "id": "A",
+            "text": "80 ريال",
+            "isCorrect": true
+          },
+          {
+            "id": "B",
+            "text": "20 ريال",
+            "isCorrect": false
+          },
+          {
+            "id": "C",
+            "text": "120 ريال",
+            "isCorrect": false
+          },
+          {
+            "id": "D",
+            "text": "90 ريال",
+            "isCorrect": false
+          }
+        ],
+        "solution": {
+          "summary": "إيجاد السعر الجديد بعد تطبيق خصم 20%",
+          "given": [
+            "السعر الأصلي: 100 ريال",
+            "نسبة الخصم: 20%"
+          ],
+          "required": "السعر الجديد بعد الخصم",
+          "formula": "السعر الجديد = السعر الأصلي × (1 - النسبة المئوية / 100)",
+          "steps": [
+            {
+              "step": 1,
+              "description": "تحويل النسبة المئوية إلى عدد عشري",
+              "calculation": "20% = 20 / 100 = 0.2"
+            },
+            {
+              "step": 2,
+              "description": "حساب مقدار الخصم",
+              "calculation": "100 × 0.2 = 20 ريال"
+            },
+            {
+              "step": 3,
+              "description": "طرح الخصم من السعر الأصلي",
+              "calculation": "100 - 20 = 80 ريال"
+            }
+          ],
+          "answer": "80 ريال",
+          "verification": "تحقق: 80 + 20 = 100 ✓",
+          "commonMistakes": [
+            "❌ الخطأ 1: حساب النسبة فقط دون طرحها (الإجابة: 20)",
+            "❌ الخطأ 2: جمع النسبة بدلاً من طرحها (الإجابة: 120)",
+            "❌ الخطأ 3: حساب خاطئ للنسبة (الإجابة: 90)"
+          ],
+          "tips": [
+            "✓ الخصم يعني تقليل السعر",
+            "✓ استخدم الصيغة: السعر الجديد = الأصلي × (1 - النسبة)",
+            "✓ تحقق من معقولية الإجابة (يجب أن تكون أقل من الأصل)"
+          ]
+        }
+      },
+      {
+        "questionId": "Q_PERC_REAL_002",
+        "skillId": "percentage",
+        "templateId": "TMPL_PERC_001",
+        "difficulty": "foundation",
+        "scenario": "shopping",
+        "position": 2,
+        "question": {
+          "text": "إذا كان سعر الفستان 200 ريال وخصم 25%، فكم سيدفع الشخص؟",
+          "languageLevel": "simple",
+          "estimatedTime": 1,
+          "category": "percentage"
+        },
+        "options": [
+          {
+            "id": "A",
+            "text": "150 ريال",
+            "isCorrect": true
+          },
+          {
+            "id": "B",
+            "text": "50 ريال",
+            "isCorrect": false
+          },
+          {
+            "id": "C",
+            "text": "225 ريال",
+            "isCorrect": false
+          },
+          {
+            "id": "D",
+            "text": "175 ريال",
+            "isCorrect": false
+          }
+        ],
+        "solution": {
+          "summary": "حساب السعر بعد خصم 25%",
+          "given": [
+            "السعر الأصلي: 200 ريال",
+            "نسبة الخصم: 25%"
+          ],
+          "required": "المبلغ المدفوع",
+          "formula": "المبلغ المدفوع = 200 × (1 - 0.25) = 200 × 0.75",
+          "steps": [
+            {
+              "step": 1,
+              "description": "حساب مقدار الخصم",
+              "calculation": "200 × 25% = 200 × 0.25 = 50 ريال"
+            },
+            {
+              "step": 2,
+              "description": "حساب المبلغ المدفوع",
+              "calculation": "200 - 50 = 150 ريال"
+            }
+          ],
+          "answer": "150 ريال",
+          "verification": "✓ 150 / 200 = 0.75 = 75% (السعر الجديد 75% من الأصل)",
+          "commonMistakes": [
+            "❌ الخطأ: إجابة = 50 (حساب النسبة فقط)",
+            "❌ الخطأ: إجابة = 225 (جمع بدلاً من الطرح)"
+          ],
+          "tips": [
+            "✓ 25% = ربع السعر",
+            "✓ السعر الجديد = 75% من الأصل",
+            "✓ تحقق: هل الإجابة أقل من 200؟"
+          ]
+        }
+      },
+      {
+        "questionId": "Q_PERC_REAL_003",
+        "skillId": "percentage",
+        "templateId": "TMPL_PERC_004",
+        "difficulty": "foundation",
+        "scenario": "statistics",
+        "position": 3,
+        "question": {
+          "text": "كم 50% من 400؟",
+          "languageLevel": "simple",
+          "estimatedTime": 1,
+          "category": "percentage"
+        },
+        "options": [
+          {
+            "id": "A",
+            "text": "200",
+            "isCorrect": true
+          },
+          {
+            "id": "B",
+            "text": "50",
+            "isCorrect": false
+          },
+          {
+            "id": "C",
+            "text": "450",
+            "isCorrect": false
+          },
+          {
+            "id": "D",
+            "text": "800",
+            "isCorrect": false
+          }
+        ],
+        "solution": {
+          "summary": "حساب نسبة مئوية من عدد",
+          "given": ["العدد: 400", "النسبة: 50%"],
+          "required": "النتيجة",
+          "formula": "النتيجة = 400 × 50/100 = 400 × 0.5",
+          "steps": [
+            {
+              "step": 1,
+              "description": "تحويل النسبة إلى عدد عشري",
+              "calculation": "50% = 0.5"
+            },
+            {
+              "step": 2,
+              "description": "ضرب العدد في النسبة",
+              "calculation": "400 × 0.5 = 200"
+            }
+          ],
+          "answer": "200",
+          "verification": "✓ 200 هو نصف 400",
+          "commonMistakes": [
+            "❌ الخطأ: عدم تحويل النسبة (400 × 50 = 20000)"
+          ],
+          "tips": [
+            "✓ 50% = نصف العدد",
+            "✓ تحقق: 200 + 200 = 400"
+          ]
+        }
+      },
+      {
+        "questionId": "Q_PERC_REAL_004",
+        "skillId": "percentage",
+        "templateId": "TMPL_PERC_004",
+        "difficulty": "foundation",
+        "scenario": "statistics",
+        "position": 4,
+        "question": {
+          "text": "احسب 30% من 500",
+          "languageLevel": "simple",
+          "estimatedTime": 1,
+          "category": "percentage"
+        },
+        "options": [
+          {
+            "id": "A",
+            "text": "150",
+            "isCorrect": true
+          },
+          {
+            "id": "B",
+            "text": "30",
+            "isCorrect": false
+          },
+          {
+            "id": "C",
+            "text": "470",
+            "isCorrect": false
+          },
+          {
+            "id": "D",
+            "text": "530",
+            "isCorrect": false
+          }
+        ],
+        "solution": {
+          "summary": "حساب 30% من 500",
+          "given": ["العدد: 500", "النسبة: 30%"],
+          "required": "القيمة",
+          "formula": "500 × 30/100 = 500 × 0.3 = 150",
+          "steps": [
+            {
+              "step": 1,
+              "calculation": "500 × 0.3 = 150"
+            }
+          ],
+          "answer": "150",
+          "verification": "✓ صحيح",
+          "commonMistakes": [],
+          "tips": []
+        }
+      },
+      {
+        "questionId": "Q_PERC_REAL_005",
+        "skillId": "percentage",
+        "templateId": "TMPL_PERC_002",
+        "difficulty": "basic",
+        "scenario": "shopping",
+        "position": 5,
+        "question": {
+          "text": "اشترى أحمد فستاناً بـ 150 ريال بعد خصم 25%، فما السعر الأصلي؟",
+          "languageLevel": "simple",
+          "estimatedTime": 2,
+          "category": "percentage"
+        },
+        "options": [
+          {
+            "id": "A",
+            "text": "200 ريال",
+            "isCorrect": true
+          },
+          {
+            "id": "B",
+            "text": "175 ريال",
+            "isCorrect": false
+          },
+          {
+            "id": "C",
+            "text": "125 ريال",
+            "isCorrect": false
+          },
+          {
+            "id": "D",
+            "text": "225 ريال",
+            "isCorrect": false
+          }
+        ],
+        "solution": {
+          "summary": "إيجاد السعر الأصلي بعد معرفة السعر النهائي والخصم",
+          "given": [
+            "السعر بعد الخصم: 150 ريال",
+            "نسبة الخصم: 25%"
+          ],
+          "required": "السعر الأصلي",
+          "formula": "السعر الأصلي = السعر النهائي ÷ (1 - النسبة المئوية / 100)",
+          "steps": [
+            {
+              "step": 1,
+              "description": "النسبة المتبقية بعد الخصم",
+              "calculation": "100% - 25% = 75%"
+            },
+            {
+              "step": 2,
+              "description": "السعر الأصلي",
+              "calculation": "150 ÷ 0.75 = 200 ريال"
+            }
+          ],
+          "answer": "200 ريال",
+          "verification": "تحقق: 200 × 0.75 = 150 ✓",
+          "commonMistakes": [
+            "❌ الخطأ: 150 × 1.25 = 187.5 (خطأ)",
+            "❌ الخطأ: 150 + 25 = 175 (خطأ)"
+          ],
+          "tips": [
+            "✓ إذا كان الخصم 25%، فالسعر الجديد 75% من الأصل",
+            "✓ استخدم القسمة للعودة للقيمة الأصلية"
+          ]
+        }
+      },
+      {
+        "questionId": "Q_PERC_REAL_006",
+        "skillId": "percentage",
+        "templateId": "TMPL_PERC_006",
+        "difficulty": "basic",
+        "scenario": "business",
+        "position": 6,
+        "question": {
+          "text": "اشترى تاجر سلعة بـ 500 ريال وباعها بـ 600 ريال، كم نسبة الربح؟",
+          "languageLevel": "simple",
+          "estimatedTime": 2,
+          "category": "percentage"
+        },
+        "options": [
+          {
+            "id": "A",
+            "text": "20%",
+            "isCorrect": true
+          },
+          {
+            "id": "B",
+            "text": "100 ريال",
+            "isCorrect": false
+          },
+          {
+            "id": "C",
+            "text": "16.67%",
+            "isCorrect": false
+          },
+          {
+            "id": "D",
+            "text": "120%",
+            "isCorrect": false
+          }
+        ],
+        "solution": {
+          "summary": "حساب نسبة الربح",
+          "given": [
+            "سعر الشراء: 500 ريال",
+            "سعر البيع: 600 ريال"
+          ],
+          "required": "نسبة الربح",
+          "formula": "نسبة الربح = (سعر البيع - سعر الشراء) / سعر الشراء × 100%",
+          "steps": [
+            {
+              "step": 1,
+              "description": "حساب الربح",
+              "calculation": "600 - 500 = 100 ريال"
+            },
+            {
+              "step": 2,
+              "description": "حساب النسبة",
+              "calculation": "(100 / 500) × 100% = 20%"
+            }
+          ],
+          "answer": "20%",
+          "verification": "✓ تحقق: 500 × 1.2 = 600",
+          "commonMistakes": [
+            "❌ الخطأ: الإجابة 100 (قيمة الربح وليس النسبة)",
+            "❌ الخطأ: 100/600 = 16.67% (استخدام المقسوم عليه الخاطئ)"
+          ],
+          "tips": [
+            "✓ استخدم سعر الشراء في المقسوم عليه",
+            "✓ ضرب في 100 للحصول على النسبة"
+          ]
+        }
+      },
+      {
+        "questionId": "Q_PERC_REAL_007",
+        "skillId": "percentage",
+        "templateId": "TMPL_PERC_007",
+        "difficulty": "basic",
+        "scenario": "business",
+        "position": 7,
+        "question": {
+          "text": "ارتفع سعر المنتج من 400 ريال إلى 480 ريال، كم نسبة الزيادة؟",
+          "languageLevel": "simple",
+          "estimatedTime": 2,
+          "category": "percentage"
+        },
+        "options": [
+          {
+            "id": "A",
+            "text": "20%",
+            "isCorrect": true
+          },
+          {
+            "id": "B",
+            "text": "80 ريال",
+            "isCorrect": false
+          },
+          {
+            "id": "C",
+            "text": "16.67%",
+            "isCorrect": false
+          },
+          {
+            "id": "D",
+            "text": "120%",
+            "isCorrect": false
+          }
+        ],
+        "solution": {
+          "summary": "حساب نسبة الزيادة بين قيمتين",
+          "given": [
+            "القيمة الأولى: 400 ريال",
+            "القيمة الثانية: 480 ريال"
+          ],
+          "required": "نسبة الزيادة",
+          "formula": "نسبة الزيادة = ((القيمة الجديدة - القديمة) / القيمة القديمة) × 100%",
+          "steps": [
+            {
+              "step": 1,
+              "description": "حساب الفرق",
+              "calculation": "480 - 400 = 80 ريال"
+            },
+            {
+              "step": 2,
+              "description": "حساب النسبة",
+              "calculation": "(80 / 400) × 100% = 20%"
+            }
+          ],
+          "answer": "20%",
+          "verification": "✓ 400 × 1.2 = 480",
+          "commonMistakes": [
+            "❌ الخطأ: استخدام 480 في المقسوم عليه"
+          ],
+          "tips": []
+        }
+      },
+      {
+        "questionId": "Q_PERC_REAL_008",
+        "skillId": "percentage",
+        "templateId": "TMPL_PERC_005",
+        "difficulty": "intermediate",
+        "scenario": "statistics",
+        "position": 8,
+        "question": {
+          "text": "إذا كان 40% من العدد = 160، فما العدد الكامل؟",
+          "languageLevel": "simple",
+          "estimatedTime": 2,
+          "category": "percentage"
+        },
+        "options": [
+          {
+            "id": "A",
+            "text": "400",
+            "isCorrect": true
+          },
+          {
+            "id": "B",
+            "text": "200",
+            "isCorrect": false
+          },
+          {
+            "id": "C",
+            "text": "360",
+            "isCorrect": false
+          },
+          {
+            "id": "D",
+            "text": "640",
+            "isCorrect": false
+          }
+        ],
+        "solution": {
+          "summary": "إيجاد العدد الكامل من نسبة معطاة",
+          "given": [
+            "40% من العدد = 160"
+          ],
+          "required": "العدد الكامل",
+          "formula": "العدد = 160 ÷ (40/100) = 160 ÷ 0.4",
+          "steps": [
+            {
+              "step": 1,
+              "description": "إذا 40% = 160",
+              "calculation": "إذاً 1% = 160/40 = 4"
+            },
+            {
+              "step": 2,
+              "description": "العدد الكامل (100%)",
+              "calculation": "100% = 4 × 100 = 400"
+            }
+          ],
+          "answer": "400",
+          "verification": "✓ 400 × 0.4 = 160",
+          "commonMistakes": [
+            "❌ الخطأ: 160 × 0.4 = 64"
+          ],
+          "tips": []
+        }
+      },
+      {
+        "questionId": "Q_PERC_REAL_009",
+        "skillId": "percentage",
+        "templateId": "TMPL_PERC_003",
+        "difficulty": "intermediate",
+        "scenario": "business",
+        "position": 9,
+        "question": {
+          "text": "سعر سلعة 1000 ريال، ارتفع 10% ثم انخفض 10%، فما السعر النهائي؟",
+          "languageLevel": "simple",
+          "estimatedTime": 3,
+          "category": "percentage"
+        },
+        "options": [
+          {
+            "id": "A",
+            "text": "990 ريال",
+            "isCorrect": true
+          },
+          {
+            "id": "B",
+            "text": "1000 ريال",
+            "isCorrect": false
+          },
+          {
+            "id": "C",
+            "text": "1100 ريال",
+            "isCorrect": false
+          },
+          {
+            "id": "D",
+            "text": "900 ريال",
+            "isCorrect": false
+          }
+        ],
+        "solution": {
+          "summary": "تطبيق زيادة ثم نقصان",
+          "given": [
+            "السعر الأصلي: 1000 ريال",
+            "زيادة 10% ثم نقصان 10%"
+          ],
+          "required": "السعر النهائي",
+          "formula": "السعر النهائي = 1000 × 1.1 × 0.9",
+          "steps": [
+            {
+              "step": 1,
+              "description": "بعد الزيادة 10%",
+              "calculation": "1000 × 1.1 = 1100 ريال"
+            },
+            {
+              "step": 2,
+              "description": "بعد النقصان 10%",
+              "calculation": "1100 × 0.9 = 990 ريال"
+            }
+          ],
+          "answer": "990 ريال",
+          "verification": "✓ 1000 × 0.99 = 990",
+          "commonMistakes": [
+            "❌ الخطأ الشهير: افتراض أنهما يلغيان بعضهما = 1000",
+            "❌ الخطأ: الجمع 10 + 10 = 20"
+          ],
+          "tips": [
+            "✓ الزيادة والنقصان لا يلغيان بعضهما",
+            "✓ النقصان يطبق على القيمة المرتفعة"
+          ]
+        }
+      },
+      {
+        "questionId": "Q_PERC_REAL_010",
+        "skillId": "percentage",
+        "templateId": "TMPL_PERC_008",
+        "difficulty": "advanced",
+        "scenario": "shopping",
+        "position": 10,
+        "question": {
+          "text": "سلعة سعرها 500 ريال، خصم أول 20% وخصم إضافي 10% على السعر الجديد، فما السعر النهائي؟",
+          "languageLevel": "simple",
+          "estimatedTime": 3,
+          "category": "percentage"
+        },
+        "options": [
+          {
+            "id": "A",
+            "text": "360 ريال",
+            "isCorrect": true
+          },
+          {
+            "id": "B",
+            "text": "300 ريال",
+            "isCorrect": false
+          },
+          {
+            "id": "C",
+            "text": "400 ريال",
+            "isCorrect": false
+          },
+          {
+            "id": "D",
+            "text": "350 ريال",
+            "isCorrect": false
+          }
+        ],
+        "solution": {
+          "summary": "تطبيق خصمين متتاليين",
+          "given": [
+            "السعر الأصلي: 500 ريال",
+            "خصم أول: 20%",
+            "خصم إضافي: 10%"
+          ],
+          "required": "السعر النهائي",
+          "formula": "السعر النهائي = 500 × (1 - 0.2) × (1 - 0.1) = 500 × 0.8 × 0.9",
+          "steps": [
+            {
+              "step": 1,
+              "description": "بعد الخصم الأول 20%",
+              "calculation": "500 × 0.8 = 400 ريال"
+            },
+            {
+              "step": 2,
+              "description": "بعد الخصم الإضافي 10%",
+              "calculation": "400 × 0.9 = 360 ريال"
+            }
+          ],
+          "answer": "360 ريال",
+          "verification": "✓ 500 × 0.72 = 360 (الخصم الإجمالي 28%)",
+          "commonMistakes": [
+            "❌ الخطأ: إضافة الخصومات 20 + 10 = 30% (النتيجة 350)",
+            "❌ الخطأ: تطبيق كلا الخصمين على السعر الأصلي"
+          ],
+          "tips": [
+            "✓ الخصم الثاني يطبق على السعر بعد الخصم الأول",
+            "✓ لا تجمع النسب، اضرب العوامل"
+          ]
+        }
+      }
+    ],
+    "statistics": {
+      "totalGenerated": 10,
+      "byDifficulty": {
+        "foundation": 4,
+        "basic": 3,
+        "intermediate": 2,
+        "advanced": 1,
+        "qudrat": 0
+      },
+      "byScenario": {
+        "shopping": 4,
+        "business": 3,
+        "statistics": 2,
+        "travel": 0,
+        "work": 0
+      },
+      "averageTime": 1.8,
+      "validQuestions": 10,
+      "issues": []
+    },
+    "notes": {
+      "nextSteps": [
+        "توليد 40 سؤال إضافي باستخدام generateBatch50Questions()",
+        "إضافة أسئلة advanced و qudrat حقيقية",
+        "اختبار الأسئلة مع مجموعة من الطلاب",
+        "تحسين الخيارات الخاطئة بناءً على البيانات"
+      ],
+      "templateCoverage": [
+        "✓ TMPL_PERC_001: الخصم البسيط (2 أسئلة)",
+        "✓ TMPL_PERC_002: إيجاد السعر الأصلي (1 سؤال)",
+        "✓ TMPL_PERC_003: الزيادة والنقصان (1 سؤال)",
+        "✓ TMPL_PERC_004: النسبة من عدد (2 سؤال)",
+        "✓ TMPL_PERC_005: نسبة من نسبة (1 سؤال)",
+        "✓ TMPL_PERC_006: الربح والخسارة (1 سؤال)",
+        "✓ TMPL_PERC_007: نسبة الزيادة (1 سؤال)",
+        "✓ TMPL_PERC_008: الخصومات المتسلسلة (1 سؤال)"
+      ]
+    }
+  }
+}

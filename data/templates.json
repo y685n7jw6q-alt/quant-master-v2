@@ -1,0 +1,473 @@
+{
+  "templates": {
+    "percentageSkill": {
+      "skillId": "percentage",
+      "skillName": "النسبة المئوية",
+      "totalTemplates": 50,
+      "templates": [
+        {
+          "id": "TMPL_PERC_001",
+          "name": "الخصم البسيط",
+          "difficulty": "foundation",
+          "scenario": "shopping",
+          "description": "إيجاد السعر بعد خصم نسبة مئوية",
+          "linguisticVariations": [
+            "إذا كان سعر السلعة {price} ريال وتم تخفيضها بنسبة {discount}%، فما السعر الجديد؟",
+            "تاجر يخفض سعر سلعة من {price} إلى... بنسبة خصم {discount}%",
+            "بخصم {discount}% على سلعة سعرها {price} ريال"
+          ],
+          "formula": "السعر الجديد = السعر الأصلي × (1 - النسبة المئوية / 100)",
+          "variables": {
+            "price": { "min": 50, "max": 1000, "step": 50 },
+            "discount": { "min": 5, "max": 50, "step": 5 }
+          },
+          "solution": {
+            "step1": "تحويل النسبة المئوية إلى عدد عشري: {discount}% = {discount}/100",
+            "step2": "حساب التخفيض: {price} × {discount}/100 = {discountAmount}",
+            "step3": "طرح التخفيض: {price} - {discountAmount} = {finalPrice}"
+          },
+          "distractors": {
+            "wrongCalculation": "{price} × {discount}",
+            "wrongOperation": "{price} + {discountAmount}",
+            "halfValue": "{finalPrice} / 2"
+          },
+          "correctAnswerFormula": "price * (1 - discount/100)",
+          "commonMistakes": [
+            "حساب النسبة بدون طرحها من الأصل",
+            "إضافة النسبة بدلاً من طرحها",
+            "عدم تحويل النسبة إلى عدد عشري"
+          ]
+        },
+        {
+          "id": "TMPL_PERC_002",
+          "name": "إيجاد السعر الأصلي",
+          "difficulty": "basic",
+          "scenario": "shopping",
+          "description": "إيجاد السعر الأصلي بعد معرفة السعر النهائي والخصم",
+          "linguisticVariations": [
+            "اشترى محمد سلعة بـ {finalPrice} ريال بعد خصم {discount}%، فما السعر الأصلي؟",
+            "السعر بعد التخفيض {finalPrice}، والخصم كان {discount}%",
+            "إذا دفع {finalPrice} مع خصم {discount}%"
+          ],
+          "formula": "السعر الأصلي = السعر النهائي ÷ (1 - النسبة المئوية / 100)",
+          "variables": {
+            "finalPrice": { "min": 25, "max": 500, "step": 25 },
+            "discount": { "min": 10, "max": 40, "step": 10 }
+          },
+          "solution": {
+            "step1": "تحويل النسبة: {discount}% = {discountDecimal}",
+            "step2": "السعر الأصلي = {finalPrice} ÷ {remainingPercent} = {originalPrice}"
+          },
+          "distractors": {
+            "directMultiplication": "{finalPrice} × (1 + {discountDecimal})",
+            "wrongDivision": "{finalPrice} ÷ {discount}",
+            "doubleValue": "{finalPrice} × 2"
+          },
+          "correctAnswerFormula": "finalPrice / (1 - discount/100)",
+          "commonMistakes": [
+            "قسمة بدلاً من الضرب",
+            "استخدام الخصم بشكل مباشر"
+          ]
+        },
+        {
+          "id": "TMPL_PERC_003",
+          "name": "الزيادة والنقصان",
+          "difficulty": "intermediate",
+          "scenario": "business",
+          "description": "تطبيق تسلسل من الزيادات والنقصانات",
+          "linguisticVariations": [
+            "سعر سلعة {initialPrice} ارتفع {increase1}% ثم انخفض {decrease}%، فما السعر النهائي؟",
+            "زيادة بنسبة {increase1}% ثم نقصان {decrease}%",
+            "بعد ارتفاع {increase1}% وهبوط {decrease}%"
+          ],
+          "formula": "السعر النهائي = السعر الأصلي × (1 + الزيادة) × (1 - النقصان)",
+          "variables": {
+            "initialPrice": { "min": 100, "max": 500, "step": 50 },
+            "increase1": { "min": 10, "max": 30, "step": 5 },
+            "decrease": { "min": 10, "max": 30, "step": 5 }
+          },
+          "solution": {
+            "step1": "بعد الزيادة: {initialPrice} × (1 + {increase1}/100) = {afterIncrease}",
+            "step2": "بعد النقصان: {afterIncrease} × (1 - {decrease}/100) = {finalPrice}"
+          },
+          "distractors": {
+            "canceledEffect": "{initialPrice}",
+            "additiveCalculation": "{initialPrice} + {increase1} - {decrease}",
+            "wrongOrder": "{finalPrice} × 2"
+          },
+          "correctAnswerFormula": "initialPrice * (1 + increase1/100) * (1 - decrease/100)",
+          "commonMistakes": [
+            "افتراض أن الزيادة والنقصان يلغيان بعضهما",
+            "جمع النسب بدلاً من ضربها"
+          ]
+        },
+        {
+          "id": "TMPL_PERC_004",
+          "name": "النسبة المئوية من عدد",
+          "difficulty": "foundation",
+          "scenario": "statistics",
+          "description": "حساب نسبة مئوية من عدد معين",
+          "linguisticVariations": [
+            "كم {percentage}% من {number}؟",
+            "احسب {percentage}% من {number}",
+            "إذا كان {number} وأخذنا منه {percentage}%"
+          ],
+          "formula": "النتيجة = العدد × (النسبة / 100)",
+          "variables": {
+            "number": { "min": 100, "max": 1000, "step": 50 },
+            "percentage": { "min": 10, "max": 90, "step": 10 }
+          },
+          "solution": {
+            "step1": "تحويل النسبة: {percentage}% = {percentageDecimal}",
+            "step2": "الحساب: {number} × {percentageDecimal} = {result}"
+          },
+          "distractors": {
+            "wrongDivision": "{number} ÷ {percentage}",
+            "justThePercentage": "{percentage}",
+            "twoTimesResult": "{result} × 2"
+          },
+          "correctAnswerFormula": "number * percentage / 100",
+          "commonMistakes": [
+            "قسمة بدلاً من الضرب",
+            "عدم تحويل النسبة إلى عدد عشري"
+          ]
+        },
+        {
+          "id": "TMPL_PERC_005",
+          "name": "نسبة من نسبة",
+          "difficulty": "intermediate",
+          "scenario": "statistics",
+          "description": "حساب نسبة من نسبة أخرى (تركيب النسب)",
+          "linguisticVariations": [
+            "{percentage1}% من {percentage2}% من {number}",
+            "أول {percentage1}% ثم {percentage2}% من الناتج",
+            "بنسبة {percentage1}% ثم {percentage2}%"
+          ],
+          "formula": "النتيجة = العدد × (النسبة الأولى / 100) × (النسبة الثانية / 100)",
+          "variables": {
+            "number": { "min": 100, "max": 500, "step": 50 },
+            "percentage1": { "min": 10, "max": 50, "step": 10 },
+            "percentage2": { "min": 10, "max": 50, "step": 10 }
+          },
+          "solution": {
+            "step1": "النسبة الأولى: {number} × {percentage1}/100 = {result1}",
+            "step2": "النسبة الثانية: {result1} × {percentage2}/100 = {finalResult}"
+          },
+          "distractors": {
+            "addedPercentages": "{number} × ({percentage1}+{percentage2})/100",
+            "halfResult": "{finalResult} / 2",
+            "wrongOrder": "{number} × {percentage2} × {percentage1}"
+          },
+          "correctAnswerFormula": "number * percentage1 / 100 * percentage2 / 100",
+          "commonMistakes": [
+            "جمع النسب بدلاً من ضربها",
+            "الخلط في ترتيب العمليات"
+          ]
+        },
+        {
+          "id": "TMPL_PERC_006",
+          "name": "الربح والخسارة",
+          "difficulty": "basic",
+          "scenario": "business",
+          "description": "حساب نسبة الربح أو الخسارة",
+          "linguisticVariations": [
+            "اشترى بـ {costPrice} وباع بـ {sellingPrice}، كم نسبة الربح؟",
+            "تاجر اشترى سلعة بـ {costPrice} وربح {profitAmount}",
+            "سعر الشراء {costPrice} والبيع {sellingPrice}"
+          ],
+          "formula": "نسبة الربح = (سعر البيع - سعر الشراء) / سعر الشراء × 100",
+          "variables": {
+            "costPrice": { "min": 100, "max": 500, "step": 50 },
+            "profitPercentage": { "min": 10, "max": 50, "step": 10 }
+          },
+          "solution": {
+            "step1": "حساب الربح: {costPrice} × {profitPercentage}/100 = {profitAmount}",
+            "step2": "سعر البيع: {costPrice} + {profitAmount} = {sellingPrice}"
+          },
+          "distractors": {
+            "justProfit": "{profitAmount}",
+            "wrongFormula": "{profitAmount} / {profitPercentage}",
+            "noPercentage": "{sellingPrice - costPrice}"
+          },
+          "correctAnswerFormula": "(sellingPrice - costPrice) / costPrice * 100",
+          "commonMistakes": [
+            "حساب الربح بدلاً من النسبة",
+            "استخدام سعر البيع في المقسوم عليه"
+          ]
+        },
+        {
+          "id": "TMPL_PERC_007",
+          "name": "النسبة المئوية للزيادة",
+          "difficulty": "basic",
+          "scenario": "business",
+          "description": "حساب نسبة الزيادة بين قيمتين",
+          "linguisticVariations": [
+            "ارتفع السعر من {oldValue} إلى {newValue}، كم نسبة الزيادة؟",
+            "قديماً {oldValue} وحالياً {newValue}، النسبة؟",
+            "من {oldValue} ارتفع إلى {newValue}"
+          ],
+          "formula": "نسبة الزيادة = ((القيمة الجديدة - القيمة القديمة) / القيمة القديمة) × 100",
+          "variables": {
+            "oldValue": { "min": 100, "max": 400, "step": 50 },
+            "increasePercentage": { "min": 10, "max": 50, "step": 10 }
+          },
+          "solution": {
+            "step1": "الفرق: {newValue} - {oldValue} = {difference}",
+            "step2": "النسبة: {difference} / {oldValue} × 100 = {increasePercentage}%"
+          },
+          "distractors": {
+            "simpleSubtraction": "{newValue} - {oldValue}",
+            "wrongDivision": "{difference} / {newValue} × 100",
+            "doublePercentage": "{increasePercentage} × 2"
+          },
+          "correctAnswerFormula": "((newValue - oldValue) / oldValue) * 100",
+          "commonMistakes": [
+            "قسمة على القيمة الجديدة بدلاً من القديمة",
+            "نسيان الضرب في 100"
+          ]
+        },
+        {
+          "id": "TMPL_PERC_008",
+          "name": "الخصومات المتسلسلة",
+          "difficulty": "advanced",
+          "scenario": "shopping",
+          "description": "تطبيق عدة خصومات متتالية",
+          "linguisticVariations": [
+            "خصم {discount1}% ثم خصم إضافي {discount2}% على السعر الجديد",
+            "خصمان متتاليان {discount1}% و{discount2}%",
+            "بخصمين {discount1}% و{discount2}%"
+          ],
+          "formula": "السعر النهائي = السعر الأصلي × (1 - الخصم الأول) × (1 - الخصم الثاني)",
+          "variables": {
+            "price": { "min": 100, "max": 1000, "step": 100 },
+            "discount1": { "min": 10, "max": 30, "step": 5 },
+            "discount2": { "min": 10, "max": 30, "step": 5 }
+          },
+          "solution": {
+            "step1": "بعد الخصم الأول: {price} × (1 - {discount1}/100) = {afterFirst}",
+            "step2": "بعد الخصم الثاني: {afterFirst} × (1 - {discount2}/100) = {finalPrice}"
+          },
+          "distractors": {
+            "addedDiscounts": "{price} × (1 - ({discount1}+{discount2})/100)",
+            "justOneDiscount": "{price} × (1 - {discount1}/100)",
+            "wrongMultiplication": "{price} - {discount1} - {discount2}"
+          },
+          "correctAnswerFormula": "price * (1 - discount1/100) * (1 - discount2/100)",
+          "commonMistakes": [
+            "إضافة الخصومات بدلاً من ضربها",
+            "تطبيق الخصم الثاني على السعر الأصلي"
+          ]
+        },
+        {
+          "id": "TMPL_PERC_009",
+          "name": "إيجاد النسبة بين عددين",
+          "difficulty": "foundation",
+          "scenario": "statistics",
+          "description": "حساب نسبة مئوية لعدد من عدد آخر",
+          "linguisticVariations": [
+            "كم نسبة {part} من {total}؟",
+            "{part} من {total} تساوي كم نسبة مئوية؟",
+            "إذا كان {part} من أصل {total}"
+          ],
+          "formula": "النسبة المئوية = (الجزء / الكل) × 100",
+          "variables": {
+            "total": { "min": 100, "max": 500, "step": 50 },
+            "percentage": { "min": 10, "max": 80, "step": 10 }
+          },
+          "solution": {
+            "step1": "حساب الجزء: {total} × {percentage}/100 = {part}",
+            "step2": "التحقق: {part} / {total} × 100 = {percentage}%"
+          },
+          "distractors": {
+            "wrongFormula": "{part} × {total}",
+            "justDivision": "{part} / {total}",
+            "inversePercentage": "100 - {percentage}"
+          },
+          "correctAnswerFormula": "(part / total) * 100",
+          "commonMistakes": [
+            "عدم ضرب النتيجة في 100",
+            "عكس الكسر (المقسوم والمقسوم عليه)"
+          ]
+        },
+        {
+          "id": "TMPL_PERC_010",
+          "name": "مقارنة النسب المئوية",
+          "difficulty": "intermediate",
+          "scenario": "statistics",
+          "description": "مقارنة بين نسبتين مئويتين لتحديد الأكبر",
+          "linguisticVariations": [
+            "أيهما أكبر: {percent1}% من {value1} أم {percent2}% من {value2}؟",
+            "مقارنة {percent1}% و{percent2}%",
+            "{value1} بنسبة {percent1}% أو {value2} بنسبة {percent2}%"
+          ],
+          "formula": "النتيجة الأولى = {value1} × {percent1}/100، النتيجة الثانية = {value2} × {percent2}/100",
+          "variables": {
+            "value1": { "min": 100, "max": 400, "step": 50 },
+            "value2": { "min": 100, "max": 400, "step": 50 },
+            "percent1": { "min": 20, "max": 80, "step": 10 },
+            "percent2": { "min": 20, "max": 80, "step": 10 }
+          },
+          "solution": {
+            "step1": "النتيجة الأولى: {value1} × {percent1}/100 = {result1}",
+            "step2": "النتيجة الثانية: {value2} × {percent2}/100 = {result2}",
+            "step3": "المقارنة: {result1} أكبر من {result2}"
+          },
+          "distractors": {
+            "comparingPercentages": "{percent1} > {percent2}",
+            "comparingValues": "{value1} > {value2}",
+            "wrongCalculation": "({percent1} + {percent2}) / 2"
+          },
+          "correctAnswerFormula": "Compare: value1 * percent1 / 100 vs value2 * percent2 / 100",
+          "commonMistakes": [
+            "مقارنة النسب بدلاً من حساب القيم",
+            "مقارنة القيم الأصلية بدلاً من النسب"
+          ]
+        }
+      ]
+    },
+    "ratioSkill": {
+      "skillId": "ratio",
+      "skillName": "النسبة والتناسب",
+      "totalTemplates": 50,
+      "templates": [
+        {
+          "id": "TMPL_RATIO_001",
+          "name": "إيجاد النسبة",
+          "difficulty": "foundation",
+          "scenario": "ratios",
+          "description": "حساب النسبة بين عددين",
+          "linguisticVariations": [
+            "ما النسبة بين {value1} و{value2}؟",
+            "النسبة من {value1} إلى {value2}",
+            "{value1}:{value2} = ؟:1"
+          ],
+          "formula": "النسبة = القيمة الأولى / القيمة الثانية",
+          "variables": {
+            "value1": { "min": 10, "max": 100, "step": 10 },
+            "value2": { "min": 10, "max": 100, "step": 10 }
+          },
+          "solution": {
+            "step1": "قسمة القيمة الأولى على الثانية: {value1} / {value2} = {ratio}"
+          },
+          "distractors": {
+            "wrongDivision": "{value2} / {value1}",
+            "addition": "{value1} + {value2}",
+            "multiplication": "{value1} × {value2}"
+          },
+          "correctAnswerFormula": "value1 / value2",
+          "commonMistakes": [
+            "عكس الترتيب",
+            "عدم تبسيط النسبة"
+          ]
+        },
+        {
+          "id": "TMPL_RATIO_002",
+          "name": "التناسب الطردي",
+          "difficulty": "basic",
+          "scenario": "ratios",
+          "description": "حل مسألة تناسب طردي",
+          "linguisticVariations": [
+            "إذا كان {value1} يقابل {value2}، فكم {value3} يقابل؟",
+            "{value1} : {value2} = {value3} : ؟",
+            "تناسب طردي: {value1}/{value2} = {value3}/؟"
+          ],
+          "formula": "القيمة = (القيمة المعطاة × الحد الثاني) / الحد الأول",
+          "variables": {
+            "value1": { "min": 10, "max": 50, "step": 10 },
+            "value2": { "min": 10, "max": 50, "step": 10 },
+            "value3": { "min": 10, "max": 50, "step": 10 }
+          },
+          "solution": {
+            "step1": "النسبة: {value1} / {value2}",
+            "step2": "القيمة: {value3} × {value2} / {value1} = {result}"
+          },
+          "distractors": {
+            "wrongFormula": "{value3} + {value2} - {value1}",
+            "inverseFormula": "{value3} × {value1} / {value2}",
+            "simpleAddition": "{value3} + {value2}"
+          },
+          "correctAnswerFormula": "value3 * value2 / value1",
+          "commonMistakes": [
+            "عكس الضرب والقسمة",
+            "عدم حفظ النسبة"
+          ]
+        }
+      ]
+    },
+    "basicArithmeticSkill": {
+      "skillId": "basicArithmetic",
+      "skillName": "العمليات الحسابية الأساسية",
+      "totalTemplates": 50,
+      "templates": [
+        {
+          "id": "TMPL_ARITH_001",
+          "name": "الجمع البسيط",
+          "difficulty": "foundation",
+          "scenario": "shopping",
+          "description": "جمع عددين أو أكثر",
+          "linguisticVariations": [
+            "{num1} + {num2} = ؟",
+            "ما مجموع {num1} و{num2}؟",
+            "إذا أضفنا {num1} إلى {num2}"
+          ],
+          "formula": "المجموع = الحد الأول + الحد الثاني",
+          "variables": {
+            "num1": { "min": 10, "max": 100, "step": 10 },
+            "num2": { "min": 10, "max": 100, "step": 10 }
+          },
+          "solution": {
+            "step1": "{num1} + {num2} = {sum}"
+          },
+          "distractors": {
+            "subtraction": "{num1} - {num2}",
+            "multiplication": "{num1} × {num2}",
+            "halfSum": "{sum} / 2"
+          },
+          "correctAnswerFormula": "num1 + num2",
+          "commonMistakes": [
+            "الخلط بين الجمع والطرح",
+            "أخطاء في المنازل العددية"
+          ]
+        }
+      ]
+    }
+  },
+  "templateStructure": {
+    "description": "هيكل القالب الموحد",
+    "fields": [
+      "id: معرف فريد للقالب",
+      "name: اسم القالب",
+      "difficulty: مستوى الصعوبة",
+      "scenario: السيناريو المطبق",
+      "description: وصف مختصر",
+      "linguisticVariations: صيغ لغوية متعددة",
+      "formula: الصيغة الرياضية",
+      "variables: المتغيرات وقيمها",
+      "solution: خطوات الحل",
+      "distractors: الخيارات الخاطئة",
+      "correctAnswerFormula: صيغة حساب الإجابة",
+      "commonMistakes: الأخطاء الشائعة"
+    ]
+  },
+  "templateUsage": {
+    "description": "كيفية استخدام القوالب لتوليد أسئلة",
+    "process": [
+      "1. اختر قالب بناءً على المهارة والصعوبة",
+      "2. أنشئ متغيرات عشوائية ضمن النطاقات المحددة",
+      "3. استبدل المتغيرات في الصيغة اللغوية",
+      "4. احسب الإجابة الصحيحة",
+      "5. أنشئ خيارات خاطئة ذكية",
+      "6. اخلط الخيارات",
+      "7. أضف تفاصيل الحل والأخطاء الشائعة"
+    ]
+  },
+  "qualityAssurance": {
+    "templateValidation": [
+      "التحقق من الصيغة الرياضية",
+      "اختبار مع متغيرات مختلفة",
+      "التأكد من وضوح الصيغة اللغوية",
+      "مراجعة الخيارات الخاطئة",
+      "اختبار الحل الخطوة بخطوة"
+    ]
+  }
+}

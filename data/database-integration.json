@@ -1,0 +1,596 @@
+{
+  "databaseIntegration": {
+    "description": "نظام التكامل مع قاعدة البيانات - تخزين واسترجاع جميع البيانات",
+    "version": "1.0.0",
+    "purpose": "ربط جميع أنظمة النظام مع قاعدة بيانات مركزية",
+    "databaseStructure": {
+      "tables": [
+        {
+          "tableName": "users",
+          "purpose": "معلومات المستخدمين",
+          "columns": [
+            {
+              "columnName": "userId",
+              "type": "INT PRIMARY KEY",
+              "description": "معرف المستخدم الفريد"
+            },
+            {
+              "columnName": "username",
+              "type": "VARCHAR(255)",
+              "description": "اسم المستخدم"
+            },
+            {
+              "columnName": "email",
+              "type": "VARCHAR(255) UNIQUE",
+              "description": "البريد الإلكتروني"
+            },
+            {
+              "columnName": "userType",
+              "type": "ENUM('student', 'teacher', 'admin')",
+              "description": "نوع المستخدم"
+            },
+            {
+              "columnName": "createdAt",
+              "type": "TIMESTAMP",
+              "description": "تاريخ الإنشاء"
+            },
+            {
+              "columnName": "lastLogin",
+              "type": "TIMESTAMP",
+              "description": "آخر دخول"
+            }
+          ]
+        },
+        {
+          "tableName": "skills",
+          "purpose": "المهارات المتاحة",
+          "columns": [
+            {
+              "columnName": "skillId",
+              "type": "INT PRIMARY KEY",
+              "description": "معرف المهارة"
+            },
+            {
+              "columnName": "skillName",
+              "type": "VARCHAR(255)",
+              "description": "اسم المهارة"
+            },
+            {
+              "columnName": "skillCategory",
+              "type": "VARCHAR(100)",
+              "description": "فئة المهارة"
+            },
+            {
+              "columnName": "description",
+              "type": "TEXT",
+              "description": "وصف المهارة"
+            },
+            {
+              "columnName": "difficulty",
+              "type": "VARCHAR(50)",
+              "description": "مستوى الصعوبة الإجمالي"
+            },
+            {
+              "columnName": "createdAt",
+              "type": "TIMESTAMP",
+              "description": "تاريخ الإنشاء"
+            }
+          ]
+        },
+        {
+          "tableName": "questions",
+          "purpose": "بنك الأسئلة",
+          "columns": [
+            {
+              "columnName": "questionId",
+              "type": "INT PRIMARY KEY",
+              "description": "معرف السؤال الفريد"
+            },
+            {
+              "columnName": "skillId",
+              "type": "INT FOREIGN KEY",
+              "description": "معرف المهارة"
+            },
+            {
+              "columnName": "templateId",
+              "type": "VARCHAR(50)",
+              "description": "معرف القالب"
+            },
+            {
+              "columnName": "questionText",
+              "type": "TEXT",
+              "description": "نص السؤال"
+            },
+            {
+              "columnName": "difficulty",
+              "type": "ENUM('foundation', 'basic', 'intermediate', 'advanced', 'qudrat')",
+              "description": "مستوى الصعوبة"
+            },
+            {
+              "columnName": "scenario",
+              "type": "VARCHAR(100)",
+              "description": "السيناريو"
+            },
+            {
+              "columnName": "correctAnswer",
+              "type": "VARCHAR(255)",
+              "description": "الإجابة الصحيحة"
+            },
+            {
+              "columnName": "options",
+              "type": "JSON",
+              "description": "الخيارات (JSON)"
+            },
+            {
+              "columnName": "solution",
+              "type": "JSON",
+              "description": "الحل المفصل (JSON)"
+            },
+            {
+              "columnName": "commonMistakes",
+              "type": "JSON",
+              "description": "الأخطاء الشائعة (JSON)"
+            },
+            {
+              "columnName": "status",
+              "type": "ENUM('draft', 'published', 'archived')",
+              "description": "حالة السؤال"
+            },
+            {
+              "columnName": "timesUsed",
+              "type": "INT DEFAULT 0",
+              "description": "عدد مرات الاستخدام"
+            },
+            {
+              "columnName": "successRate",
+              "type": "DECIMAL(5, 2) DEFAULT 0",
+              "description": "نسبة النجاح"
+            },
+            {
+              "columnName": "averageTime",
+              "type": "INT DEFAULT 0",
+              "description": "متوسط الزمن بالثواني"
+            },
+            {
+              "columnName": "createdAt",
+              "type": "TIMESTAMP",
+              "description": "تاريخ الإنشاء"
+            },
+            {
+              "columnName": "updatedAt",
+              "type": "TIMESTAMP",
+              "description": "آخر تحديث"
+            }
+          ]
+        },
+        {
+          "tableName": "exams",
+          "purpose": "الامتحانات",
+          "columns": [
+            {
+              "columnName": "examId",
+              "type": "INT PRIMARY KEY",
+              "description": "معرف الامتحان"
+            },
+            {
+              "columnName": "skillId",
+              "type": "INT FOREIGN KEY",
+              "description": "معرف المهارة"
+            },
+            {
+              "columnName": "examType",
+              "type": "ENUM('diagnostic', 'practice', 'final', 'remedial', 'review')",
+              "description": "نوع الامتحان"
+            },
+            {
+              "columnName": "questions",
+              "type": "JSON",
+              "description": "قائمة معرفات الأسئلة"
+            },
+            {
+              "columnName": "totalQuestions",
+              "type": "INT",
+              "description": "عدد الأسئلة"
+            },
+            {
+              "columnName": "duration",
+              "type": "INT",
+              "description": "المدة بالدقائق"
+            },
+            {
+              "columnName": "passingScore",
+              "type": "INT DEFAULT 80",
+              "description": "درجة النجاح"
+            },
+            {
+              "columnName": "createdAt",
+              "type": "TIMESTAMP",
+              "description": "تاريخ الإنشاء"
+            }
+          ]
+        },
+        {
+          "tableName": "examAttempts",
+          "purpose": "محاولات الامتحانات",
+          "columns": [
+            {
+              "columnName": "attemptId",
+              "type": "INT PRIMARY KEY",
+              "description": "معرف المحاولة"
+            },
+            {
+              "columnName": "userId",
+              "type": "INT FOREIGN KEY",
+              "description": "معرف الطالب"
+            },
+            {
+              "columnName": "examId",
+              "type": "INT FOREIGN KEY",
+              "description": "معرف الامتحان"
+            },
+            {
+              "columnName": "startTime",
+              "type": "TIMESTAMP",
+              "description": "وقت البدء"
+            },
+            {
+              "columnName": "endTime",
+              "type": "TIMESTAMP",
+              "description": "وقت الانتهاء"
+            },
+            {
+              "columnName": "timeSpent",
+              "type": "INT",
+              "description": "الزمن المستغرق بالثواني"
+            },
+            {
+              "columnName": "answers",
+              "type": "JSON",
+              "description": "إجابات الطالب"
+            },
+            {
+              "columnName": "correctCount",
+              "type": "INT",
+              "description": "عدد الإجابات الصحيحة"
+            },
+            {
+              "columnName": "score",
+              "type": "DECIMAL(5, 2)",
+              "description": "الدرجة"
+            },
+            {
+              "columnName": "masteryLevel",
+              "type": "VARCHAR(50)",
+              "description": "مستوى الإتقان"
+            },
+            {
+              "columnName": "status",
+              "type": "ENUM('completed', 'submitted', 'graded')",
+              "description": "حالة المحاولة"
+            }
+          ]
+        },
+        {
+          "tableName": "studentProgress",
+          "purpose": "تقدم الطالب في كل مهارة",
+          "columns": [
+            {
+              "columnName": "progressId",
+              "type": "INT PRIMARY KEY",
+              "description": "معرف التقدم"
+            },
+            {
+              "columnName": "userId",
+              "type": "INT FOREIGN KEY",
+              "description": "معرف الطالب"
+            },
+            {
+              "columnName": "skillId",
+              "type": "INT FOREIGN KEY",
+              "description": "معرف المهارة"
+            },
+            {
+              "columnName": "bestScore",
+              "type": "DECIMAL(5, 2) DEFAULT 0",
+              "description": "أفضل درجة"
+            },
+            {
+              "columnName": "averageScore",
+              "type": "DECIMAL(5, 2) DEFAULT 0",
+              "description": "متوسط الدرجات"
+            },
+            {
+              "columnName": "attemptCount",
+              "type": "INT DEFAULT 0",
+              "description": "عدد المحاولات"
+            },
+            {
+              "columnName": "masteryStatus",
+              "type": "ENUM('not_started', 'developing', 'proficient', 'mastered')",
+              "description": "حالة الإتقان"
+            },
+            {
+              "columnName": "lastAttempt",
+              "type": "TIMESTAMP",
+              "description": "آخر محاولة"
+            },
+            {
+              "columnName": "commonMistakes",
+              "type": "JSON",
+              "description": "الأخطاء الشائعة للطالب"
+            },
+            {
+              "columnName": "updatedAt",
+              "type": "TIMESTAMP",
+              "description": "آخر تحديث"
+            }
+          ]
+        },
+        {
+          "tableName": "performance_metrics",
+          "purpose": "مؤشرات الأداء",
+          "columns": [
+            {
+              "columnName": "metricId",
+              "type": "INT PRIMARY KEY",
+              "description": "معرف المؤشر"
+            },
+            {
+              "columnName": "questionId",
+              "type": "INT FOREIGN KEY",
+              "description": "معرف السؤال"
+            },
+            {
+              "columnName": "totalAttempts",
+              "type": "INT DEFAULT 0",
+              "description": "إجمالي المحاولات"
+            },
+            {
+              "columnName": "correctAttempts",
+              "type": "INT DEFAULT 0",
+              "description": "المحاولات الصحيحة"
+            },
+            {
+              "columnName": "successRate",
+              "type": "DECIMAL(5, 2) DEFAULT 0",
+              "description": "معدل النجاح"
+            },
+            {
+              "columnName": "averageTime",
+              "type": "INT DEFAULT 0",
+              "description": "متوسط الزمن"
+            },
+            {
+              "columnName": "discriminationIndex",
+              "type": "DECIMAL(4, 2) DEFAULT 0",
+              "description": "مؤشر التفريق"
+            },
+            {
+              "columnName": "mostCommonWrongAnswer",
+              "type": "VARCHAR(255)",
+              "description": "أشهر خيار خاطئ"
+            },
+            {
+              "columnName": "updatedAt",
+              "type": "TIMESTAMP",
+              "description": "آخر تحديث"
+            }
+          ]
+        }
+      ]
+    },
+    "databaseOperations": {
+      "createOperations": [
+        {
+          "operation": "إنشاء طالب جديد",
+          "query": "INSERT INTO users (username, email, userType) VALUES (?, ?, 'student')",
+          "example": "INSERT INTO users (username, email, userType) VALUES ('ahmed', 'ahmed@example.com', 'student')"
+        },
+        {
+          "operation": "إضافة سؤال جديد",
+          "query": "INSERT INTO questions (skillId, questionText, difficulty, ...) VALUES (...)",
+          "example": "إدراج سؤال مع جميع تفاصيله"
+        },
+        {
+          "operation": "إنشاء امتحان",
+          "query": "INSERT INTO exams (skillId, examType, questions, ...) VALUES (...)",
+          "example": "إنشاء امتحان جديد من 50 سؤال"
+        }
+      ],
+      "readOperations": [
+        {
+          "operation": "استرجاع سؤال",
+          "query": "SELECT * FROM questions WHERE questionId = ?"
+        },
+        {
+          "operation": "استرجاع أداء الطالب",
+          "query": "SELECT * FROM studentProgress WHERE userId = ? AND skillId = ?"
+        },
+        {
+          "operation": "استرجاع محاولات الامتحان",
+          "query": "SELECT * FROM examAttempts WHERE userId = ? AND examId = ?"
+        },
+        {
+          "operation": "إحصائيات الفصل",
+          "query": "SELECT skillId, AVG(score) as avgScore FROM examAttempts GROUP BY skillId"
+        }
+      ],
+      "updateOperations": [
+        {
+          "operation": "تحديث درجة الطالب",
+          "query": "UPDATE studentProgress SET bestScore = ?, averageScore = ? WHERE userId = ? AND skillId = ?"
+        },
+        {
+          "operation": "تحديث مؤشرات السؤال",
+          "query": "UPDATE performance_metrics SET successRate = ?, averageTime = ? WHERE questionId = ?"
+        },
+        {
+          "operation": "تحديث حالة الإتقان",
+          "query": "UPDATE studentProgress SET masteryStatus = ? WHERE userId = ? AND skillId = ?"
+        }
+      ],
+      "deleteOperations": [
+        {
+          "operation": "حذف سؤال (أرشفة)",
+          "query": "UPDATE questions SET status = 'archived' WHERE questionId = ?"
+        },
+        {
+          "operation": "حذف امتحان قديم",
+          "query": "DELETE FROM exams WHERE examId = ? AND createdAt < DATE_SUB(NOW(), INTERVAL 1 YEAR)"
+        }
+      ]
+    },
+    "dataFlow": {
+      "description": "تدفق البيانات في النظام",
+      "flows": [
+        {
+          "flow": "توليد سؤال",
+          "steps": [
+            "1. اختر قالب من جداول templates (في JSON)",
+            "2. وليد متغيرات عشوائية",
+            "3. احسب الإجابة",
+            "4. أدرج السؤال في جدول questions",
+            "5. حديث مؤشرات الأداء"
+          ]
+        },
+        {
+          "flow": "إجراء امتحان",
+          "steps": [
+            "1. احصل على قائمة الأسئلة من جدول exams",
+            "2. اسحب الأسئلة من جدول questions",
+            "3. عرض الأسئلة للطالب",
+            "4. سجل الإجابات",
+            "5. احسب الدرجة",
+            "6. أدرج المحاولة في جدول examAttempts",
+            "7. حديث جدول studentProgress"
+          ]
+        },
+        {
+          "flow": "تحليل الأداء",
+          "steps": [
+            "1. اجمع البيانات من examAttempts",
+            "2. احسب المؤشرات (نسبة النجاح، الزمن، التفريق)",
+            "3. احدث جدول performance_metrics",
+            "4. رصد الأخطاء الشائعة",
+            "5. حديث جدول studentProgress"
+          ]
+        }
+      ]
+    },
+    "indexes": {
+      "description": "فهارس قاعدة البيانات لتحسين الأداء",
+      "indexes": [
+        {
+          "indexName": "idx_user_id",
+          "table": "examAttempts",
+          "columns": ["userId"],
+          "purpose": "تسريع البحث عن محاولات الطالب"
+        },
+        {
+          "indexName": "idx_skill_id",
+          "table": "questions",
+          "columns": ["skillId"],
+          "purpose": "تسريع البحث عن أسئلة مهارة معينة"
+        },
+        {
+          "indexName": "idx_user_skill",
+          "table": "studentProgress",
+          "columns": ["userId", "skillId"],
+          "purpose": "تسريع البحث عن تقدم الطالب"
+        },
+        {
+          "indexName": "idx_exam_date",
+          "table": "examAttempts",
+          "columns": ["startTime"],
+          "purpose": "تسريع البحث عن امتحانات بتاريخ معين"
+        }
+      ]
+    },
+    "backupStrategy": {
+      "description": "استراتيجية النسخ الاحتياطية",
+      "frequency": "يومي",
+      "methods": [
+        {
+          "method": "النسخ الاحتياطية الكاملة",
+          "frequency": "أسبوعي",
+          "storage": "خادم النسخ الاحتياطي الأساسي"
+        },
+        {
+          "method": "النسخ الاحتياطية الزيادية",
+          "frequency": "يومي",
+          "storage": "خادم النسخ الاحتياطي الثانوي"
+        },
+        {
+          "method": "السحابة",
+          "frequency": "يومي",
+          "storage": "AWS S3 / Google Cloud"
+        }
+      ]
+    },
+    "security": {
+      "description": "إجراءات الأمان",
+      "measures": [
+        {
+          "measure": "التشفير",
+          "description": "تشفير كلمات المرور والبيانات الحساسة"
+        },
+        {
+          "measure": "التحقق من الهوية",
+          "description": "استخدام توكن JWT للجلسات"
+        },
+        {
+          "measure": "التحكم في الوصول",
+          "description": "إذن وصول بناءً على دور المستخدم"
+        },
+        {
+          "measure": "تسجيل الأنشطة",
+          "description": "تسجيل جميع العمليات المهمة"
+        },
+        {
+          "measure": "حماية من SQL Injection",
+          "description": "استخدام Prepared Statements"
+        }
+      ]
+    },
+    "scalability": {
+      "description": "قابلية التوسع",
+      "considerations": [
+        {
+          "consideration": "عدد الطلاب",
+          "current": "1000",
+          "scalable": "100,000+",
+          "approach": "تقسيم قاعدة البيانات (Sharding)"
+        },
+        {
+          "consideration": "عدد الأسئلة",
+          "current": "1000",
+          "scalable": "100,000+",
+          "approach": "جداول منفصلة حسب المهارة"
+        },
+        {
+          "consideration": "عدد الامتحانات",
+          "current": "100",
+          "scalable": "10,000+",
+          "approach": "قاعدة بيانات منفصلة للبيانات التاريخية"
+        }
+      ]
+    },
+    "queryExamples": {
+      "example1": {
+        "title": "احصل على أداء طالب في مهارة",
+        "query": "SELECT sp.*, COUNT(ea.attemptId) as totalAttempts FROM studentProgress sp LEFT JOIN examAttempts ea ON sp.userId = ea.userId AND sp.skillId = ea.examId WHERE sp.userId = 1 AND sp.skillId = 1",
+        "result": "معلومات التقدم والمحاولات"
+      },
+      "example2": {
+        "title": "احصل على أسوأ 10 أسئلة",
+        "query": "SELECT q.*, pm.successRate FROM questions q JOIN performance_metrics pm ON q.questionId = pm.questionId ORDER BY pm.successRate ASC LIMIT 10",
+        "result": "قائمة الأسئلة التي يواجه فيها الطلاب صعوبة"
+      },
+      "example3": {
+        "title": "احصل على إحصائيات الفصل",
+        "query": "SELECT s.skillName, AVG(ea.score) as avgScore, COUNT(DISTINCT ea.userId) as studentCount FROM exams e JOIN examAttempts ea ON e.examId = ea.examId JOIN skills s ON e.skillId = s.skillId GROUP BY e.skillId",
+        "result": "إحصائيات الفصل حسب المهارة"
+      }
+    }
+  }
+}

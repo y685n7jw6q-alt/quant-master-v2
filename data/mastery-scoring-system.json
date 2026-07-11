@@ -1,0 +1,442 @@
+{
+  "masteryScoringSystem": {
+    "description": "نظام تقييم الإتقان الشامل - قياس مستوى إتقان الطالب للمهارة",
+    "version": "1.0.0",
+    "purpose": "توفير نظام تقييم متقدم يأخذ في الاعتبار عوامل متعددة",
+    "masteryIndicators": {
+      "definition": "مؤشرات الإتقان هي معايير متعددة تحدد ما إذا كان الطالب متقناً للمهارة",
+      "indicators": [
+        {
+          "indicator": "Accuracy",
+          "description": "دقة الإجابات",
+          "weight": "30%",
+          "threshold": "> 85%",
+          "metric": "نسبة الإجابات الصحيحة"
+        },
+        {
+          "indicator": "Consistency",
+          "description": "الاستقرار والتناسق",
+          "weight": "20%",
+          "threshold": "انحراف معياري منخفض",
+          "metric": "عدم تذبذب الأداء"
+        },
+        {
+          "indicator": "Speed",
+          "description": "السرعة في الحل",
+          "weight": "15%",
+          "threshold": "ضمن الزمن المتوقع",
+          "metric": "متوسط الزمن لكل سؤال"
+        },
+        {
+          "indicator": "Depth",
+          "description": "العمق والفهم العميق",
+          "weight": "20%",
+          "threshold": "> 80% في المستويات العليا",
+          "metric": "الأداء في الأسئلة المتقدمة"
+        },
+        {
+          "indicator": "Application",
+          "description": "التطبيق في حالات مختلفة",
+          "weight": "15%",
+          "threshold": "النجاح في سيناريوهات متعددة",
+          "metric": "الأداء عبر السيناريوهات"
+        }
+      ]
+    },
+    "scoringFormula": {
+      "description": "صيغة حساب درجة الإتقان الشاملة",
+      "formula": "درجة الإتقان = (الدقة × 0.30) + (الاستقرار × 0.20) + (السرعة × 0.15) + (العمق × 0.20) + (التطبيق × 0.15)",
+      "breakdown": {
+        "accuracy": {
+          "formula": "(الإجابات الصحيحة / إجمالي الأسئلة) × 100",
+          "weight": 0.30,
+          "example": "40/50 = 80%"
+        },
+        "consistency": {
+          "formula": "100 - (الانحراف المعياري × 10)",
+          "weight": 0.20,
+          "example": "إذا كانت الدرجات: 85, 82, 88, 80 = استقرار عالي"
+        },
+        "speed": {
+          "formula": "(الزمن المتوقع / الزمن الفعلي) × 100",
+          "weight": 0.15,
+          "example": "(60 ثانية / 50 ثانية) × 100 = 120% (ممتاز)"
+        },
+        "depth": {
+          "formula": "متوسط درجات المستويات (Intermediate, Advanced, Qudrat)",
+          "weight": 0.20,
+          "example": "(70 + 65 + 50) / 3 = 61.7%"
+        },
+        "application": {
+          "formula": "متوسط الأداء في السيناريوهات المختلفة",
+          "weight": 0.15,
+          "example": "(Shopping: 85%, Business: 78%, Statistics: 82%) = 81.7%"
+        }
+      }
+    },
+    "masteryLevels": {
+      "levels": [
+        {
+          "level": 1,
+          "name": "Not Yet",
+          "description": "لم يتقن بعد",
+          "score": "0-40%",
+          "requirements": {
+            "accuracy": "< 50%",
+            "consistency": "< 50%",
+            "speed": "بطيء جداً"
+          },
+          "intervention": [
+            "✗ إعادة تدريس شاملة",
+            "✗ تمارين أساسية",
+            "✗ شرح مفاهيم أساسية"
+          ]
+        },
+        {
+          "level": 2,
+          "name": "Emerging",
+          "description": "يبدأ الفهم",
+          "score": "41-60%",
+          "requirements": {
+            "accuracy": "50-65%",
+            "consistency": "متوسطة",
+            "speed": "بطيء"
+          },
+          "intervention": [
+            "⚠️ تدريس علاجي موجه",
+            "⚠️ تمارين تدريبية",
+            "⚠️ معالجة الأخطاء الشائعة"
+          ]
+        },
+        {
+          "level": 3,
+          "name": "Developing",
+          "description": "في طريق التطور",
+          "score": "61-75%",
+          "requirements": {
+            "accuracy": "65-75%",
+            "consistency": "جيدة",
+            "speed": "متوسطة"
+          },
+          "intervention": [
+            "⚠️ تمارين إضافية",
+            "⚠️ أسئلة متقدمة",
+            "⚠️ ربط المفاهيم"
+          ]
+        },
+        {
+          "level": 4,
+          "name": "Proficient",
+          "description": "كفء وقادر",
+          "score": "76-85%",
+          "requirements": {
+            "accuracy": "75-85%",
+            "consistency": "عالية",
+            "speed": "مناسبة"
+          },
+          "intervention": [
+            "✓ امتحانات إثرائية",
+            "✓ مهارات متقدمة",
+            "✓ تطبيقات معقدة"
+          ]
+        },
+        {
+          "level": 5,
+          "name": "Mastered",
+          "description": "متقن بشكل عميق",
+          "score": "86-100%",
+          "requirements": {
+            "accuracy": "> 85%",
+            "consistency": "عالية جداً",
+            "speed": "سريع"
+          },
+          "intervention": [
+            "✓ تدريب قرناء",
+            "✓ مهام قيادية",
+            "✓ مهارات متقدمة جداً"
+          ]
+        }
+      ]
+    },
+    "assessmentCriteria": {
+      "description": "معايير التقييم التفصيلية",
+      "criteria": [
+        {
+          "criterion": "المعرفة الأساسية",
+          "description": "فهم المفاهيم الأساسية",
+          "assessment": [
+            "الإجابة الصحيحة على أسئلة Foundation",
+            "فهم الصيغ الأساسية",
+            "عدم الخلط بين المفاهيم"
+          ],
+          "passingPercentage": "90%"
+        },
+        {
+          "criterion": "التطبيق الأساسي",
+          "description": "تطبيق المفاهيم بشكل مباشر",
+          "assessment": [
+            "الإجابة الصحيحة على أسئلة Basic",
+            "حل مشاكل مباشرة",
+            "استخدام الصيغ بشكل صحيح"
+          ],
+          "passingPercentage": "80%"
+        },
+        {
+          "criterion": "التطبيق المتقدم",
+          "description": "تطبيق في حالات معقدة",
+          "assessment": [
+            "الإجابة الصحيحة على أسئلة Intermediate",
+            "ربط مفاهيم متعددة",
+            "حل مسائل متعددة الخطوات"
+          ],
+          "passingPercentage": "75%"
+        },
+        {
+          "criterion": "التحليل والتفكير العميق",
+          "description": "تحليل وحل مشاكل معقدة جداً",
+          "assessment": [
+            "الإجابة الصحيحة على أسئلة Advanced و Qudrat",
+            "تطبيق في حالات جديدة",
+            "إعطاء توجيهات للآخرين"
+          ],
+          "passingPercentage": "70%"
+        }
+      ]
+    },
+    "progressJourney": {
+      "description": "رحلة التطور النموذجية للطالب",
+      "journey": [
+        {
+          "phase": "المرحلة الأولى: البداية",
+          "duration": "1-2 أسابيع",
+          "goal": "فهم المفاهيم الأساسية",
+          "activities": [
+            "مشاهدة شروحات تمهيدية",
+            "حل أسئلة Foundation (10 أسئلة)",
+            "فهم الصيغ والقواعد"
+          ],
+          "successCriteria": "85%+ في أسئلة Foundation"
+        },
+        {
+          "phase": "المرحلة الثانية: البناء",
+          "duration": "2-4 أسابيع",
+          "goal": "تطبيق المفاهيم بشكل مباشر",
+          "activities": [
+            "حل أسئلة Basic (10 أسئلة)",
+            "تمارين تطبيقية",
+            "معالجة الأخطاء الشائعة"
+          ],
+          "successCriteria": "80%+ في أسئلة Basic"
+        },
+        {
+          "phase": "المرحلة الثالثة: التطوير",
+          "duration": "4-8 أسابيع",
+          "goal": "التعامل مع حالات معقدة",
+          "activities": [
+            "حل أسئلة Intermediate (15 سؤال)",
+            "ربط مفاهيم متعددة",
+            "أسئلة تدمج مهارات متعددة"
+          ],
+          "successCriteria": "75%+ في أسئلة Intermediate"
+        },
+        {
+          "phase": "المرحلة الرابعة: الإتقان",
+          "duration": "8-12 أسبوع",
+          "goal": "التمكن الكامل من المهارة",
+          "activities": [
+            "حل أسئلة Advanced و Qudrat",
+            "حل مسائل حقيقية",
+            "تدريب أقران"
+          ],
+          "successCriteria": "70%+ في أسئلة Advanced و 50%+ في Qudrat"
+        },
+        {
+          "phase": "المرحلة الخامسة: الاحتفاظ",
+          "duration": "مستمر",
+          "goal": "الحفاظ على الإتقان",
+          "activities": [
+            "مراجعة دورية (كل أسبوع)",
+            "اختبارات صيانة",
+            "تطبيقات عملية"
+          ],
+          "successCriteria": "الحفاظ على 75%+ في جميع الامتحانات"
+        }
+      ]
+    },
+    "benchmarks": {
+      "description": "معايير الأداء المرجعية",
+      "benchmarks": [
+        {
+          "benchmark": "الطالب النموذجي",
+          "score": "75-80%",
+          "timeToMastery": "8-12 أسبوع",
+          "characteristics": [
+            "دراسة منتظمة",
+            "حل تمارين متنوعة",
+            "ساعة واحدة يومياً"
+          ]
+        },
+        {
+          "benchmark": "الطالب الممتاز",
+          "score": "90-100%",
+          "timeToMastery": "4-8 أسابيع",
+          "characteristics": [
+            "دراسة كثيفة",
+            "حل أسئلة متقدمة",
+            "ساعتان يومياً"
+          ]
+        },
+        {
+          "benchmark": "الطالب الذي يحتاج دعماً",
+          "score": "50-70%",
+          "timeToMastery": "16-20 أسبوع",
+          "characteristics": [
+            "دراسة منتظمة لكن بطيئة",
+            "بحاجة شروحات إضافية",
+            "30 دقيقة يومياً"
+          ]
+        }
+      ]
+    },
+    "certificateGeneration": {
+      "description": "نظام توليد الشهادات",
+      "certificateTypes": [
+        {
+          "type": "Proficiency Certificate",
+          "requirements": {
+            "masteryScore": "> 80%",
+            "allCriteriaMetered": true,
+            "examsAttempts": "حد أدنى 2 امتحان"
+          },
+          "template": "شهادة الكفاءة - المهارة"
+        },
+        {
+          "type": "Mastery Certificate",
+          "requirements": {
+            "masteryScore": "> 90%",
+            "allCriteriaMetered": true,
+            "examsAttempts": "حد أدنى 3 امتحانات",
+            "consistencyScore": "> 85%"
+          },
+          "template": "شهادة الإتقان - المهارة"
+        },
+        {
+          "type": "Completion Certificate",
+          "requirements": {
+            "masteryScore": "> 75%",
+            "allPhases": "اكتمال جميع مراحل التعلم"
+          },
+          "template": "شهادة الإنجاز - المهارة"
+        }
+      ]
+    },
+    "competencyMatrix": {
+      "description": "مصفوفة الكفايات - تقييم متعدد الأبعاد",
+      "dimensions": [
+        {
+          "dimension": "المعرفة",
+          "level1": "لا يعرف",
+          "level2": "معرفة بسيطة",
+          "level3": "معرفة جيدة",
+          "level4": "خبير",
+          "assessment": "امتحانات نظرية"
+        },
+        {
+          "dimension": "المهارة",
+          "level1": "لا يستطيع",
+          "level2": "يستطيع بمساعدة",
+          "level3": "يستطيع بكفاءة",
+          "level4": "يستطيع بتميز",
+          "assessment": "تطبيق عملي"
+        },
+        {
+          "dimension": "السرعة",
+          "level1": "بطيء جداً",
+          "level2": "بطيء",
+          "level3": "مناسب",
+          "level4": "سريع جداً",
+          "assessment": "قياس الزمن"
+        },
+        {
+          "dimension": "الدقة",
+          "level1": "أقل من 50%",
+          "level2": "50-70%",
+          "level3": "70-85%",
+          "level4": "أكثر من 85%",
+          "assessment": "نسبة النجاح"
+        }
+      ]
+    },
+    "reportGeneration": {
+      "description": "توليد تقارير الإتقان",
+      "reportTypes": [
+        {
+          "reportType": "Student Report",
+          "content": [
+            "ملخص الأداء الكلي",
+            "درجة الإتقان الشاملة",
+            "نقاط القوة والضعف",
+            "التوصيات المخصصة",
+            "رحلة التطور"
+          ],
+          "frequency": "بعد كل امتحان"
+        },
+        {
+          "reportType": "Teacher Report",
+          "content": [
+            "إحصائيات الفصل",
+            "قائمة الطلاب حسب مستوى الإتقان",
+            "المهارات التي تحتاج تركيز",
+            "التوصيات للتدريس"
+          ],
+          "frequency": "أسبوعي"
+        },
+        {
+          "reportType": "Parent Report",
+          "content": [
+            "الأداء العام",
+            "مستوى الإتقان",
+            "نقاط التحسين",
+            "التوصيات للدعم في المنزل"
+          ],
+          "frequency": "شهري"
+        }
+      ]
+    },
+    "adaptivePath": {
+      "description": "مسارات تعلم متكيفة حسب الأداء",
+      "paths": [
+        {
+          "pathName": "Fast Track",
+          "when": "الطالب يسجل > 85% في أول امتحان",
+          "strategy": [
+            "أسئلة أكثر تقدماً",
+            "مهارات متقدمة",
+            "تطبيقات معقدة"
+          ],
+          "duration": "4-6 أسابيع"
+        },
+        {
+          "pathName": "Normal Track",
+          "when": "الطالب يسجل 70-85%",
+          "strategy": [
+            "أسئلة متنوعة",
+            "تمارين إضافية",
+            "معالجة ثقافية"
+          ],
+          "duration": "8-10 أسابيع"
+        },
+        {
+          "pathName": "Support Track",
+          "when": "الطالب يسجل < 70%",
+          "strategy": [
+            "شروحات إضافية",
+            "أسئلة أساسية",
+            "معالجة مكثفة للأخطاء"
+          ],
+          "duration": "12-16 أسبوع"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,394 @@
+{
+  "componentLibrary": {
+    "description": "مكتبة المكونات - مكونات قابلة لإعادة الاستخدام",
+    "version": "1.0.0",
+    "purpose": "توفير مكونات موحدة وسهلة الاستخدام",
+    "buttons": [
+      {
+        "componentName": "Button",
+        "types": ["primary", "secondary", "danger", "success", "warning"],
+        "sizes": ["small", "medium", "large"],
+        "states": ["default", "hover", "active", "disabled"],
+        "properties": {
+          "text": "نص الزر",
+          "icon": "optional",
+          "loading": "false",
+          "fullWidth": "false"
+        },
+        "examples": [
+          {
+            "type": "primary",
+            "size": "medium",
+            "text": "ابدأ الآن",
+            "icon": "play"
+          },
+          {
+            "type": "danger",
+            "size": "small",
+            "text": "حذف",
+            "icon": "trash"
+          }
+        ]
+      }
+    ],
+    "inputs": [
+      {
+        "componentName": "TextInput",
+        "properties": {
+          "label": "تسمية الحقل",
+          "placeholder": "نص توضيحي",
+          "type": ["text", "email", "password", "number"],
+          "validation": "live|blur",
+          "error": "رسالة خطأ",
+          "icon": "optional",
+          "disabled": "false"
+        }
+      },
+      {
+        "componentName": "SelectDropdown",
+        "properties": {
+          "label": "اختر من القائمة",
+          "options": [
+            {"value": "1", "label": "الخيار الأول"},
+            {"value": "2", "label": "الخيار الثاني"}
+          ],
+          "searchable": true,
+          "clearable": true,
+          "multiple": false
+        }
+      },
+      {
+        "componentName": "Checkbox",
+        "properties": {
+          "label": "أوافق على الشروط",
+          "checked": false,
+          "disabled": false,
+          "help": "نص مساعد اختياري"
+        }
+      },
+      {
+        "componentName": "RadioButton",
+        "properties": {
+          "label": "اختر خيار",
+          "options": [
+            {"value": "a", "label": "الخيار أ"},
+            {"value": "b", "label": "الخيار ب"}
+          ],
+          "selected": "a"
+        }
+      },
+      {
+        "componentName": "Textarea",
+        "properties": {
+          "label": "أدخل النص",
+          "placeholder": "اكتب هنا",
+          "rows": 4,
+          "maxLength": 500,
+          "charCount": true
+        }
+      }
+    ],
+    "cards": [
+      {
+        "componentName": "Card",
+        "properties": {
+          "title": "عنوان البطاقة",
+          "description": "وصف قصير",
+          "image": "optional",
+          "footer": "optional",
+          "clickable": false,
+          "shadow": "medium"
+        }
+      },
+      {
+        "componentName": "SkillCard",
+        "properties": {
+          "title": "اسم المهارة",
+          "icon": "skill-icon",
+          "difficulty": "متوسط",
+          "masteryLevel": 75,
+          "progressBar": true,
+          "actions": ["Start", "Details"]
+        }
+      },
+      {
+        "componentName": "StatCard",
+        "properties": {
+          "title": "الإحصائية",
+          "value": "85%",
+          "icon": "chart",
+          "trend": "up|down|stable",
+          "trendValue": "+5%"
+        }
+      }
+    ],
+    "lists": [
+      {
+        "componentName": "SimpleList",
+        "properties": {
+          "items": [
+            {"text": "عنصر 1", "icon": "check"},
+            {"text": "عنصر 2", "icon": "check"}
+          ],
+          "striped": false,
+          "hoverable": true
+        }
+      },
+      {
+        "componentName": "DataTable",
+        "properties": {
+          "columns": [
+            {"key": "name", "label": "الاسم", "sortable": true},
+            {"key": "score", "label": "النتيجة", "sortable": true},
+            {"key": "status", "label": "الحالة", "sortable": false}
+          ],
+          "data": [],
+          "pagination": true,
+          "search": true,
+          "rowsPerPage": 10
+        }
+      }
+    ],
+    "modals": [
+      {
+        "componentName": "Modal",
+        "properties": {
+          "title": "عنوان النافذة",
+          "size": ["small", "medium", "large"],
+          "hasBackdrop": true,
+          "closeButton": true,
+          "actions": [
+            {"text": "إلغاء", "type": "secondary"},
+            {"text": "تأكيد", "type": "primary"}
+          ]
+        }
+      },
+      {
+        "componentName": "AlertDialog",
+        "properties": {
+          "title": "تأكيد",
+          "message": "هل أنت متأكد؟",
+          "icon": "warning",
+          "buttons": [
+            {"text": "لا", "type": "secondary"},
+            {"text": "نعم", "type": "danger"}
+          ]
+        }
+      },
+      {
+        "componentName": "SolutionModal",
+        "properties": {
+          "question": "نص السؤال",
+          "solution": "خطوات الحل",
+          "commonMistakes": ["الخطأ 1", "الخطأ 2"],
+          "tips": ["نصيحة 1", "نصيحة 2"]
+        }
+      }
+    ],
+    "alerts": [
+      {
+        "componentName": "Alert",
+        "types": ["success", "error", "warning", "info"],
+        "properties": {
+          "message": "رسالة التنبيه",
+          "icon": true,
+          "closeable": true,
+          "action": "optional"
+        }
+      },
+      {
+        "componentName": "Toast",
+        "properties": {
+          "message": "رسالة فورية",
+          "type": ["success", "error", "warning", "info"],
+          "duration": 3000,
+          "position": ["top-right", "top-left", "bottom-right", "bottom-left"]
+        }
+      }
+    ],
+    "progress": [
+      {
+        "componentName": "ProgressBar",
+        "properties": {
+          "value": 75,
+          "max": 100,
+          "label": "التقدم",
+          "showPercentage": true,
+          "color": "blue",
+          "animated": false
+        }
+      },
+      {
+        "componentName": "CircularProgress",
+        "properties": {
+          "value": 75,
+          "size": ["small", "medium", "large"],
+          "label": "75%",
+          "color": "green",
+          "background": "light"
+        }
+      },
+      {
+        "componentName": "Stepper",
+        "properties": {
+          "steps": [
+            {"label": "الخطوة 1", "status": "completed"},
+            {"label": "الخطوة 2", "status": "active"},
+            {"label": "الخطوة 3", "status": "pending"}
+          ],
+          "orientation": "horizontal|vertical"
+        }
+      }
+    ],
+    "navigation": [
+      {
+        "componentName": "Navbar",
+        "properties": {
+          "logo": "logo.png",
+          "menuItems": [
+            {"text": "الرئيسية", "url": "/"},
+            {"text": "المهارات", "url": "/skills"}
+          ],
+          "rightItems": [
+            {"text": "البحث", "icon": "search"},
+            {"text": "الملف", "icon": "user"}
+          ],
+          "sticky": true
+        }
+      },
+      {
+        "componentName": "Sidebar",
+        "properties": {
+          "items": [
+            {"text": "الرئيسية", "icon": "home", "url": "/"},
+            {"text": "المهارات", "icon": "skills", "url": "/skills"}
+          ],
+          "collapsible": true,
+          "width": "250px"
+        }
+      },
+      {
+        "componentName": "Tabs",
+        "properties": {
+          "tabs": [
+            {"label": "التفاصيل", "id": "details"},
+            {"label": "الحلول", "id": "solutions"}
+          ],
+          "activeTab": "details",
+          "variant": ["default", "pills"]
+        }
+      },
+      {
+        "componentName": "Breadcrumb",
+        "properties": {
+          "items": [
+            {"text": "الرئيسية", "url": "/"},
+            {"text": "المهارات", "url": "/skills"},
+            {"text": "النسبة المئوية", "url": null}
+          ]
+        }
+      }
+    ],
+    "charts": [
+      {
+        "componentName": "BarChart",
+        "properties": {
+          "data": [
+            {"label": "الأسبوع 1", "value": 60},
+            {"label": "الأسبوع 2", "value": 75}
+          ],
+          "title": "تقدم الطالب",
+          "xAxis": "الفترة الزمنية",
+          "yAxis": "النسبة المئوية"
+        }
+      },
+      {
+        "componentName": "LineChart",
+        "properties": {
+          "series": [
+            {"name": "المهارة 1", "data": [60, 70, 85]},
+            {"name": "المهارة 2", "data": [50, 65, 72]}
+          ],
+          "title": "تطور الأداء"
+        }
+      },
+      {
+        "componentName": "PieChart",
+        "properties": {
+          "data": [
+            {"label": "صحيح", "value": 42},
+            {"label": "خطأ", "value": 8}
+          ],
+          "title": "توزيع الإجابات"
+        }
+      },
+      {
+        "componentName": "RadialChart",
+        "properties": {
+          "value": 75,
+          "max": 100,
+          "label": "الإتقان",
+          "color": "blue"
+        }
+      }
+    ],
+    "forms": [
+      {
+        "componentName": "FormGroup",
+        "properties": {
+          "label": "مجموعة النموذج",
+          "children": ["inputs"],
+          "spacing": "medium",
+          "required": true
+        }
+      },
+      {
+        "componentName": "Form",
+        "properties": {
+          "title": "عنوان النموذج",
+          "fields": [],
+          "validation": "live|submit",
+          "submitButton": {"text": "إرسال", "loading": false}
+        }
+      }
+    ],
+    "loaders": [
+      {
+        "componentName": "Spinner",
+        "properties": {
+          "size": ["small", "medium", "large"],
+          "color": "primary",
+          "message": "جاري التحميل..."
+        }
+      },
+      {
+        "componentName": "SkeletonLoader",
+        "properties": {
+          "type": ["card", "list", "text"],
+          "count": 3,
+          "animated": true
+        }
+      }
+    ],
+    "messages": [
+      {
+        "componentName": "EmptyState",
+        "properties": {
+          "icon": "empty-box",
+          "title": "لا توجد بيانات",
+          "message": "حاول مرة أخرى لاحقاً",
+          "action": {"text": "العودة", "url": "/"}
+        }
+      },
+      {
+        "componentName": "ErrorState",
+        "properties": {
+          "icon": "error",
+          "title": "حدث خطأ",
+          "message": "حاول مرة أخرى",
+          "action": {"text": "إعادة محاولة", "onClick": "retry()"}
+        }
+      }
+    ]
+  }
+}

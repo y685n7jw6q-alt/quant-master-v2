@@ -29,6 +29,9 @@
             justify-content: space-between;
             align-items: center;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         nav .logo { font-size: 1.5rem; font-weight: 700; }
         nav button {
@@ -146,36 +149,59 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             border-left: 4px solid var(--primary);
         }
+        .stat-card h3 { color: #999; font-size: 0.875rem; margin-bottom: 0.5rem; }
         .stat-card .value { font-size: 2rem; font-weight: 700; }
         .skill-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
             gap: 2rem;
             margin: 2rem 0;
         }
         .skill-card {
             background: white;
             border-radius: 1rem;
-            padding: 2rem;
+            padding: 1.5rem;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             transition: transform 0.3s;
+            border: 1px solid #E0E0E0;
         }
-        .skill-card:hover { transform: translateY(-5px); }
+        .skill-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
+        .skill-card .header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
+        .skill-card .title { font-size: 1rem; font-weight: 600; }
+        .skill-card .icon { font-size: 2rem; }
+        .skill-card .difficulty {
+            background: linear-gradient(135deg, var(--warning) 0%, #FB8C00 100%);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
         .progress-bar {
             background: var(--light);
-            height: 8px;
+            height: 6px;
             border-radius: 4px;
-            margin: 1rem 0;
+            margin: 0.75rem 0;
         }
         .progress-bar .progress {
             background: linear-gradient(90deg, var(--primary) 0%, var(--warning) 100%);
             height: 100%;
+            border-radius: 4px;
+        }
+        .progress-text {
+            font-size: 0.75rem;
+            color: #999;
+            margin-top: 0.5rem;
         }
         .skill-card .actions {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-top: 1.5rem;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+        .skill-card .actions button {
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
         }
         .exam-container {
             display: grid;
@@ -230,6 +256,7 @@
         @media (max-width: 768px) {
             .exam-container { grid-template-columns: 1fr; }
             .hero h1 { font-size: 2rem; }
+            .skill-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
         }
     </style>
 </head>
@@ -286,9 +313,6 @@
                 <input type="password" id="loginPassword" placeholder="••••••••">
             </div>
             <button class="btn btn-primary" style="width: 100%;" onclick="app.login()">دخول</button>
-            <div style="text-align: center; margin-top: 1rem;">
-                <button onclick="app.goToSignup()" style="background: none; border: none; color: var(--primary); cursor: pointer; text-decoration: underline;">إنشاء حساب</button>
-            </div>
         </div>
     </div>
 
@@ -299,38 +323,19 @@
             <div class="dashboard-grid">
                 <div class="stat-card">
                     <h3>إجمالي الأسئلة</h3>
-                    <div class="value">23</div>
+                    <div class="value">50</div>
                 </div>
                 <div class="stat-card">
                     <h3>معدل النجاح</h3>
-                    <div class="value">78%</div>
+                    <div class="value">75%</div>
                 </div>
                 <div class="stat-card">
                     <h3>المهارات</h3>
-                    <div class="value">2</div>
+                    <div class="value">15</div>
                 </div>
             </div>
-            <h2 style="margin: 3rem 0 1.5rem;">المهارات المتاحة</h2>
-            <div class="skill-grid">
-                <div class="skill-card">
-                    <h3>النسبة المئوية</h3>
-                    <div class="progress-bar"><div class="progress" style="width: 85%;"></div></div>
-                    <p>معدل الإتقان: 85%</p>
-                    <div class="actions">
-                        <button class="btn btn-primary" onclick="app.startExam()">ابدأ</button>
-                        <button class="btn btn-secondary">تفاصيل</button>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <h3>النسبة والتناسب</h3>
-                    <div class="progress-bar"><div class="progress" style="width: 70%;"></div></div>
-                    <p>معدل الإتقان: 70%</p>
-                    <div class="actions">
-                        <button class="btn btn-primary" onclick="app.startExam()">ابدأ</button>
-                        <button class="btn btn-secondary">تفاصيل</button>
-                    </div>
-                </div>
-            </div>
+            <h2 style="margin: 3rem 0 1.5rem;">المهارات المتاحة (15 مهارة)</h2>
+            <div class="skill-grid" id="skillsGrid"></div>
         </div>
     </div>
 
@@ -392,6 +397,24 @@
     </div>
 
     <script>
+        const skills = [
+            { id: 1, name: "النسبة المئوية", icon: "📊", mastery: 85, difficulty: "متوسط" },
+            { id: 2, name: "النسبة والتناسب", icon: "⚖️", mastery: 70, difficulty: "متوسط" },
+            { id: 3, name: "الكسور العشرية", icon: "🔢", mastery: 80, difficulty: "أساسي" },
+            { id: 4, name: "العمليات الحسابية", icon: "➕", mastery: 90, difficulty: "أساسي" },
+            { id: 5, name: "الجذور والأسس", icon: "√", mastery: 65, difficulty: "متقدم" },
+            { id: 6, name: "المعادلات", icon: "📐", mastery: 75, difficulty: "متوسط" },
+            { id: 7, name: "الإحصائيات", icon: "📈", mastery: 60, difficulty: "متقدم" },
+            { id: 8, name: "الاحتمالات", icon: "🎲", mastery: 55, difficulty: "متقدم" },
+            { id: 9, name: "الهندسة الأساسية", icon: "⬜", mastery: 78, difficulty: "أساسي" },
+            { id: 10, name: "المساحة والمحيط", icon: "📏", mastery: 82, difficulty: "متوسط" },
+            { id: 11, name: "الحجم والأبعاد", icon: "📦", mastery: 70, difficulty: "متقدم" },
+            { id: 12, name: "المنطق والاستدلال", icon: "🧠", mastery: 72, difficulty: "متقدم" },
+            { id: 13, name: "الأنماط والتسلسل", icon: "🔗", mastery: 68, difficulty: "متوسط" },
+            { id: 14, name: "حل المسائل", icon: "💡", mastery: 76, difficulty: "متوسط" },
+            { id: 15, name: "الأساليب المتقدمة", icon: "🚀", mastery: 62, difficulty: "متقدم" }
+        ];
+
         const questions = [
             { id: 1, text: "احسب 25% من 200", options: [{ id: 'a', text: 'أ) 25' }, { id: 'b', text: 'ب) 50' }, { id: 'c', text: 'ج) 75' }, { id: 'd', text: 'د) 100' }], correct: 'b' },
             { id: 2, text: "السعر الأصلي 400 وخصم 20% = ؟", options: [{ id: 'a', text: 'أ) 320' }, { id: 'b', text: 'ب) 300' }, { id: 'c', text: 'ج) 280' }, { id: 'd', text: 'د) 250' }], correct: 'a' },
@@ -412,8 +435,7 @@
             },
 
             goToLogin() { this.showPage('login'); },
-            goToSignup() { alert('سيتم إضافة هذه الميزة قريباً'); },
-            goToDashboard() { this.showPage('dashboard'); },
+            goToDashboard() { this.loadDashboard(); this.showPage('dashboard'); },
 
             login() {
                 const email = document.getElementById('loginEmail').value;
@@ -422,7 +444,7 @@
                 document.getElementById('userName').textContent = this.currentUser.name;
                 document.getElementById('userNameNav').textContent = this.currentUser.name;
                 document.getElementById('userMenu').style.display = 'flex';
-                this.showPage('dashboard');
+                this.goToDashboard();
             },
 
             logout() {
@@ -431,7 +453,34 @@
                 this.showPage('landing');
             },
 
-            startExam() {
+            loadDashboard() {
+                const grid = document.getElementById('skillsGrid');
+                grid.innerHTML = '';
+                skills.forEach(skill => {
+                    const card = document.createElement('div');
+                    card.className = 'skill-card';
+                    card.innerHTML = `
+                        <div class="header">
+                            <div>
+                                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 1.5rem;">${skill.icon}</span>
+                                    <div class="title">${skill.name}</div>
+                                </div>
+                                <div class="difficulty">${skill.difficulty}</div>
+                            </div>
+                        </div>
+                        <div class="progress-bar"><div class="progress" style="width: ${skill.mastery}%;"></div></div>
+                        <div class="progress-text">معدل الإتقان: ${skill.mastery}%</div>
+                        <div class="actions">
+                            <button class="btn btn-primary" onclick="app.startExam('${skill.name}')">ابدأ</button>
+                            <button class="btn btn-secondary" onclick="alert('تفاصيل: ${skill.name}')">تفاصيل</button>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+            },
+
+            startExam(skillName) {
                 this.currentQuestion = 0;
                 this.answers = {};
                 this.showPage('exam');
@@ -492,10 +541,17 @@
                     btn.style.border = '2px solid #E0E0E0';
                     btn.style.borderRadius = '0.375rem';
                     btn.style.cursor = 'pointer';
-                    if (this.answers[i]) btn.style.background = 'var(--success)';
-                    if (i === this.currentQuestion) btn.style.background = 'var(--primary)';
-                    if (this.answers[i]) btn.style.color = 'white';
-                    if (i === this.currentQuestion) btn.style.color = 'white';
+                    btn.style.fontWeight = '600';
+                    if (this.answers[i]) {
+                        btn.style.background = 'var(--success)';
+                        btn.style.color = 'white';
+                        btn.style.borderColor = 'var(--success)';
+                    }
+                    if (i === this.currentQuestion) {
+                        btn.style.background = 'var(--primary)';
+                        btn.style.color = 'white';
+                        btn.style.borderColor = 'var(--primary)';
+                    }
                     btn.onclick = () => { this.currentQuestion = i; this.loadQuestion(); };
                     nav.appendChild(btn);
                 });
